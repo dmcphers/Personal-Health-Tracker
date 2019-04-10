@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalHealthTracker", "PersonalHealthTracker\PersonalHealthTracker.csproj", "{AECC9D08-637D-45B0-9E28-521588252C24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalHealthTracker.Model", "PersonalHealthTracker.Model\PersonalHealthTracker.Model.csproj", "{F73D08E8-DB2C-4B49-9CB3-89B42115AE11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AECC9D08-637D-45B0-9E28-521588252C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AECC9D08-637D-45B0-9E28-521588252C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AECC9D08-637D-45B0-9E28-521588252C24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F73D08E8-DB2C-4B49-9CB3-89B42115AE11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73D08E8-DB2C-4B49-9CB3-89B42115AE11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73D08E8-DB2C-4B49-9CB3-89B42115AE11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73D08E8-DB2C-4B49-9CB3-89B42115AE11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
