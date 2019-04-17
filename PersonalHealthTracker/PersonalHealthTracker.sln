@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalHealthTracker", "PersonalHealthTracker\PersonalHealthTracker.csproj", "{AECC9D08-637D-45B0-9E28-521588252C24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalHealthTracker.WebUI", "PersonalHealthTracker\PersonalHealthTracker.WebUI.csproj", "{AECC9D08-637D-45B0-9E28-521588252C24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalHealthTracker.Model", "PersonalHealthTracker.Model\PersonalHealthTracker.Model.csproj", "{F73D08E8-DB2C-4B49-9CB3-89B42115AE11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalHealthTracker.Models", "PersonalHealthTracker.Model\PersonalHealthTracker.Models.csproj", "{F73D08E8-DB2C-4B49-9CB3-89B42115AE11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
