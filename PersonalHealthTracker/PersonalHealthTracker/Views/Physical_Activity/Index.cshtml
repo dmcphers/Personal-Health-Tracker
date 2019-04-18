@@ -1,0 +1,44 @@
+﻿@*Model  Definition*@
+
+@model List<Physical_Activity>
+
+<h1>List of Physical Activities</h1>
+
+@if (Model.Count > 0)
+        {
+            <div>
+            <a class="btn btn-primary" style="margin-left: 75%" asp-action="Add" asp-controller="Physical_Activity">Add</a>
+                </div>
+        }
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>Description</th>
+        <th>Duration</th>
+        <th>Calories Burned</th>
+        <th>day Of Week</th>
+    </tr>
+
+    @foreach (var physical_activity in Model)
+    {
+        <tr>
+            <td>@physical_activity.Description</td>
+            <td>@physical_activity.Duration</td>
+            <td>@physical_activity.CaloriesBurned</td>
+            <td>@physical_activity.dayOfWeek</td>
+        </tr>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <tr>
+            <td colspan="4">
+                You don't have any Physical Activities yet - <a href="/Physical_Activity/Add">Add Activity</a>
+            </td>
+        </tr>
+    }
+    
+
+</table>
