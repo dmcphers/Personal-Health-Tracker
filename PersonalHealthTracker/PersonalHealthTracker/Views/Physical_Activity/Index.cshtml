@@ -5,11 +5,12 @@
 <h1>List of Physical Activities</h1>
 
 @if (Model.Count > 0)
-        {
-            <div>
-            <a class="btn btn-primary" style="margin-left: 75%" asp-action="Add" asp-controller="Physical_Activity">Add</a>
-                </div>
-        }
+{
+    <div>
+        <a class="btn btn-primary" style="margin-left: 75
+%" asp-action="Add" asp-controller="Physical_Activity">Add</a>
+    </div>
+}
 
 <br />
 
@@ -19,6 +20,7 @@
         <th>Duration</th>
         <th>Calories Burned</th>
         <th>day Of Week</th>
+        <th></th>
     </tr>
 
     @foreach (var physical_activity in Model)
@@ -28,17 +30,57 @@
             <td>@physical_activity.Duration</td>
             <td>@physical_activity.CaloriesBurned</td>
             <td>@physical_activity.dayOfWeek</td>
+            <td>
+                <a asp-controller="Physical_Activity" asp-action="Detail" asp-route-id="@physical_activity.Id">Detail</a> |
+                <a href="#" class="js-open-modal" data-property-id="@physical_activity.Id">Delete</a>
+            </td>
         </tr>
     }
 
     @if (Model.Count == 0)
     {
         <tr>
-            <td colspan="4">
+            <td colspan="5">
                 You don't have any Physical Activities yet - <a href="/Physical_Activity/Add">Add Activity</a>
             </td>
         </tr>
     }
-    
+
 
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>*@
+            <div class="modal-body">
+                Are you sure you want to delete that activity?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a id="js-delete-button" class="btn btn-primary">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+        <script>
+            $('.js-open-modal').on('click', event => {
+                const physical_activityId = $(event.target).data('property-id');
+                const url = `/physical_activity/delete/${physical_activityId}`;
+
+                $('#js-delete-button').attr('href', url);
+
+                $('#delete-confirmation').modal('show');
+            });
+        </script>
+    }
+
