@@ -24,7 +24,7 @@ namespace PersonalHealthTracker.WebUI.Controllers
         // HTTP GET Physical_Activity/Add
         public IActionResult Add()
         {
-            return View();
+            return View("Form");
         }
 
         [HttpPost]
@@ -48,6 +48,28 @@ namespace PersonalHealthTracker.WebUI.Controllers
             var physical_activity = Physical_Activities.Single(p => p.Id == id);
 
             Physical_Activities.Remove(physical_activity);
+
+            return View(nameof(Index), Physical_Activities);
+        }
+
+        public IActionResult Edit(int id) // --> get id from URL
+        {
+            var physical_activity = Physical_Activities.Single(p => p.Id == id);
+
+            return View("Form", physical_activity);
+        }
+
+        [HttpPost]
+        // get id from URL
+        // get updated activity from FORM
+        public IActionResult Edit(int id, Physical_Activity updatedPhysicalActivity)
+        {
+            var oldActivity = Physical_Activities.Single(p => p.Id == id);
+
+            oldActivity.Description = updatedPhysicalActivity.Description;
+            oldActivity.Duration = updatedPhysicalActivity.Duration;
+            oldActivity.CaloriesBurned = updatedPhysicalActivity.CaloriesBurned;
+            oldActivity.dayOfWeek = updatedPhysicalActivity.dayOfWeek;
 
             return View(nameof(Index), Physical_Activities);
         }
