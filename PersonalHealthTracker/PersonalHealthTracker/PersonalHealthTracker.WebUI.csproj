@@ -14,7 +14,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\PersonalHealthTracker.Model\PersonalHealthTracker.Models.csproj" />
+    <ProjectReference Include="..\PersonalHealthTracker.Model\PersonalHealthTracker.Domain.csproj" />
   </ItemGroup>
 
 </Project>

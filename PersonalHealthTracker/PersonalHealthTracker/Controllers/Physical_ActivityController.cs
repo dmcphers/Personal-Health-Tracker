@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PersonalHealthTracker.Models;
+using PersonalHealthTracker.Domain.Models;
 
 namespace PersonalHealthTracker.WebUI.Controllers
 {
@@ -30,9 +30,14 @@ namespace PersonalHealthTracker.WebUI.Controllers
         [HttpPost]
         public IActionResult Add(Physical_Activity newPhysical_Activity) // -> receive data from HTML FORM
         {
-            Physical_Activities.Add(newPhysical_Activity);
-           
-            return View(nameof(Index), Physical_Activities);
+            if (ModelState.IsValid) // all required fields are completed
+            {
+                // we should be able to add new activity
+                Physical_Activities.Add(newPhysical_Activity);
+                return View(nameof(Index), Physical_Activities);
+            }
+
+            return View("Form");
         }
 
         public IActionResult Detail(int id) // get id from URL
@@ -64,6 +69,9 @@ namespace PersonalHealthTracker.WebUI.Controllers
         // get updated activity from FORM
         public IActionResult Edit(int id, Physical_Activity updatedPhysicalActivity)
         {
+            if(ModelState.IsValid)
+            {
+
             var oldActivity = Physical_Activities.Single(p => p.Id == id);
 
             oldActivity.Description = updatedPhysicalActivity.Description;
@@ -72,6 +80,11 @@ namespace PersonalHealthTracker.WebUI.Controllers
             oldActivity.dayOfWeek = updatedPhysicalActivity.dayOfWeek;
 
             return View(nameof(Index), Physical_Activities);
+            }
+
+            return View("Form", updatedPhysicalActivity); // By passing updated activity
+                                                          // we trigger the logic
+                                                          // for edit within the Form.cshtml
         }
     }
 }
