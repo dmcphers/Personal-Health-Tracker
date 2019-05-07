@@ -12,6 +12,7 @@ namespace PersonalHealthTracker.Data.Interfaces
 
         // read
         Physical_Activity GetById(int id);
+        ICollection<Physical_Activity> GetAllPhysicalActivities();
 
         // update
         Physical_Activity Update(Physical_Activity updatedPhysical_Activity);
