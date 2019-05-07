@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalHealthTracker.Data.Implementation.SqlServer;
+using PersonalHealthTracker.Data.Interfaces;
+using PersonalHealthTrackerService.Services;
 
 namespace PersonalHealthTracker
 {
@@ -31,6 +34,10 @@ namespace PersonalHealthTracker
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // match a interface with a implementation
+            // wherever we have dependency in a constructor
+            services.AddSingleton<IPhysicalActivityService, PhysicalActivityService>();
+            services.AddSingleton<IPhysicalActivityRepository, SqlServerPhysical_ActivityRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
