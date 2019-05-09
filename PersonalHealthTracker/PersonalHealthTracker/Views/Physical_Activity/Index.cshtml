@@ -2,6 +2,13 @@
 
 @model List<Physical_Activity>
 
+@if(ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+}
+
 <h1>List of Physical Activities</h1>
 
 @if (Model.Count > 0)

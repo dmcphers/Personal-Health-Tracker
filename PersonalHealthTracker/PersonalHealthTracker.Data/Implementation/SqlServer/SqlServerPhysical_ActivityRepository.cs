@@ -15,7 +15,8 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
             using (var context = new PersonalHealthTrackerDbContext())
             {
                 // SQL --> Database look for table Physical_Activity
-                var Physical_Activity = context.Physical_Activities.Single(p => p.Id == id);
+                // if not found then returns null value rather than exception
+                var Physical_Activity = context.Physical_Activities.SingleOrDefault(p => p.Id == id);
                 return Physical_Activity;  
             }
         }
@@ -51,6 +52,7 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
                 context.Entry(OldPhysicalActivity).CurrentValues.SetValues(updatedPhysical_Activity);
 
                 // save changes
+                context.Physical_Activities.Update(OldPhysicalActivity);
                 context.SaveChanges();
 
                 return OldPhysicalActivity; // to ensure that the save happened

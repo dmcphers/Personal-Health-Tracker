@@ -34,12 +34,20 @@ namespace PersonalHealthTracker
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // match a interface with a implementation
-            // wherever we have dependency in a constructor
-            services.AddSingleton<IPhysicalActivityService, PhysicalActivityService>();
-            services.AddSingleton<IPhysicalActivityRepository, SqlServerPhysical_ActivityRepository>();
+            AddServiceImplementation(services);
+            AddRepositoryImplementation(services);            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        }
+
+        private void AddRepositoryImplementation(IServiceCollection services)
+        {
+            services.AddSingleton<IPhysicalActivityRepository, SqlServerPhysical_ActivityRepository>();
+        }
+
+        private void AddServiceImplementation(IServiceCollection services)
+        {
+            services.AddSingleton<IPhysicalActivityService, PhysicalActivityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
