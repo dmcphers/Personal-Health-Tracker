@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PersonalHealthTracker.Domain.Model;
 using PersonalHealthTracker.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace PersonalHealthTracker.Data.Context
         // represents a collection (table) of a given entity/model
         // they map to tables by default
         public DbSet<Physical_Activity> Physical_Activities { get; set; }
+        public DbSet<Physical_Activity_Type> Physical_Activity_Types { get; set; }
 
         // virtual method designed to be overridden
         // you can provide configuration information for the context
@@ -24,6 +26,18 @@ namespace PersonalHealthTracker.Data.Context
             // connection string is divided in 3 elements
             // server - database - authentication
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PersonalHealthTracker;Trusted_Connection=true");
+        }
+
+        // We can manipulate the models
+        // Add data to table
+        // change the default relationships
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Physical_Activity_Type>().HasData(
+                    new Physical_Activity_Type {Id=1, Description = "Jogging"},
+                    new Physical_Activity_Type {Id=2, Description = "Walking" },
+                    new Physical_Activity_Type {Id=3, Description = "Swimming" }
+                );
         }
     }
 }

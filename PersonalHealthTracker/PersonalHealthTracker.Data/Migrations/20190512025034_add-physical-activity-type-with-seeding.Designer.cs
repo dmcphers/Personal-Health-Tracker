@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalHealthTracker.Data.Context;
 
 namespace PersonalHealthTracker.Data.Migrations
 {
     [DbContext(typeof(PersonalHealthTrackerDbContext))]
-    partial class PersonalHealthTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190512025034_add-physical-activity-type-with-seeding")]
+    partial class addphysicalactivitytypewithseeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,23 +64,11 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.Property<int>("Duration");
 
-                    b.Property<int>("Physical_Activity_TypeId");
-
                     b.Property<int>("dayOfWeek");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Physical_Activity_TypeId");
-
                     b.ToTable("Physical_Activities");
-                });
-
-            modelBuilder.Entity("PersonalHealthTracker.Domain.Models.Physical_Activity", b =>
-                {
-                    b.HasOne("PersonalHealthTracker.Domain.Model.Physical_Activity_Type", "Physical_Activity_Type")
-                        .WithMany()
-                        .HasForeignKey("Physical_Activity_TypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

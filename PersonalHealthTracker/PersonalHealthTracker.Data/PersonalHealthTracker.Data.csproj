@@ -5,11 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190512032232_add-physicalActivity-physicalActivityType-relationship.cs" />
+    <Compile Remove="Migrations\20190512032653_add-physicalActivity-physicalActivityType-relationship.cs" />
+    <Compile Remove="Migrations\20190512033717_add-physicalActivity-physicalActivityType-relationship2.cs" />
+    <Compile Remove="Migrations\20190512041935_add-physicalActivity-physicalActivityType-relationship.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PersonalHealthTracker.Model\PersonalHealthTracker.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Diagram\" />
   </ItemGroup>
 
 </Project>
