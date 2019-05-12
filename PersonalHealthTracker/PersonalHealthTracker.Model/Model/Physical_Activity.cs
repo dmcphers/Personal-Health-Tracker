@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonalHealthTracker.Domain.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -23,5 +24,9 @@ namespace PersonalHealthTracker.Domain.Models
         [Required]
         [Display(Name ="Day of Week")]
         public DayOfWeek dayOfWeek { get; set; }
+
+        // Fully Defined Relationship
+        public int Physical_Activity_TypeId { get; set; }
+        public Physical_Activity_Type Physical_Activity_Type { get; set; }
     }
 }
