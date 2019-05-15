@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PersonalHealthTracker.Domain.Model;
-using PersonalHealthTracker.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

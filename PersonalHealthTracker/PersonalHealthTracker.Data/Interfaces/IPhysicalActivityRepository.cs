@@ -1,4 +1,4 @@
-﻿using PersonalHealthTracker.Domain.Models;
+﻿using PersonalHealthTracker.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
