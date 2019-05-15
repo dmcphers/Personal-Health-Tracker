@@ -3,23 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PersonalHealthTracker.Domain.Models;
+using PersonalHealthTracker.Domain.Model;
 using PersonalHealthTrackerService.Services;
 
 namespace PersonalHealthTracker.WebUI.Controllers
 {
     public class Physical_ActivityController : Controller
     {
-        private readonly IPhysicalActivityService _physicalActivityService;
+        private const string PHYSICALACTIVITYTYPES = "PhysicalActivityTypes";
 
-        public Physical_ActivityController(IPhysicalActivityService physicalActivityService)
+        private readonly IPhysicalActivityService _physicalActivityService;
+        private readonly IPhysicalActivityTypeService _physicalActivityTypeService;
+
+        public Physical_ActivityController(IPhysicalActivityService physicalActivityService,
+            IPhysicalActivityTypeService physicalActivityTypeService)
         {
             _physicalActivityService = physicalActivityService;
+            _physicalActivityTypeService = physicalActivityTypeService;
         }
 
         // Physical_Activity/Index
         public IActionResult Index()
         {
+            // check if got any error in TempData
+            if(TempData["Error"] !=null)
+            {
+                // Pass that error to the ViewData because communicating between action and view
+                ViewData.Add("Error", TempData["Error"]);
+            }
+
             var physicalActivities = _physicalActivityService.GetAllPhysicalActivities();
             return View(physicalActivities);
         }
@@ -27,6 +39,10 @@ namespace PersonalHealthTracker.WebUI.Controllers
         // HTTP GET Physical_Activity/Add
         public IActionResult Add()
         {
+            
+            var physicalActivityTypes = _physicalActivityTypeService.GetAll();
+            ViewData.Add(PHYSICALACTIVITYTYPES, physicalActivityTypes);
+
             return View("Form");
         }
 
@@ -59,7 +75,9 @@ namespace PersonalHealthTracker.WebUI.Controllers
 
             if(!succeeded) // when delete fails (false)
             {
-                ViewBag.Error = "Sorry, the activity could not be deleted. Try again later.";
+                // using tempdata because we are communicating between actions
+                // from delete to index
+                TempData.Add("Error","Sorry, the activity could not be deleted. Try again later.");
                 
             }
             return RedirectToAction(nameof(Index));

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace PersonalHealthTracker.Domain.Models
+namespace PersonalHealthTracker.Domain.Model
 {
     public class Physical_Activity
     {
