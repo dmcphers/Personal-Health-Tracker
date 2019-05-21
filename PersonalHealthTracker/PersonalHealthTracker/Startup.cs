@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalHealthTracker.Data.Context;
 using PersonalHealthTracker.Data.Implementation.SqlServer;
 using PersonalHealthTracker.Data.Interfaces;
+using PersonalHealthTracker.Domain.Model;
 using PersonalHealthTrackerService.Services;
 
 namespace PersonalHealthTracker
@@ -33,6 +36,13 @@ namespace PersonalHealthTracker
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            // Add DbContext as a service
+            services.AddDbContext<PersonalHealthTrackerDbContext>();
+
+            // Add Identity as a service
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<PersonalHealthTrackerDbContext>();
 
             AddServiceImplementation(services);
             AddRepositoryImplementation(services);            

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PersonalHealthTracker.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace PersonalHealthTracker.Data.Context
 {
     // DbContext --> represents a session to a db and provides APIs
     // to communicate with the db
-    public class PersonalHealthTrackerDbContext : DbContext
+    public class PersonalHealthTrackerDbContext : IdentityDbContext<AppUser>
     {
         // Per Model that we want to turn into a table
         // we add it as a DbSet
@@ -32,6 +33,9 @@ namespace PersonalHealthTracker.Data.Context
         // change the default relationships
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // base = IdentityDbContext
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Physical_Activity_Type>().HasData(
                     new Physical_Activity_Type {Id=1, Description = "Jogging"},
                     new Physical_Activity_Type {Id=2, Description = "Walking" },
