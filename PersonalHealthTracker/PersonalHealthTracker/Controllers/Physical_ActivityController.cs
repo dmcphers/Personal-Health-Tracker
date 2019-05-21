@@ -39,9 +39,8 @@ namespace PersonalHealthTracker.WebUI.Controllers
         // HTTP GET Physical_Activity/Add
         public IActionResult Add()
         {
-            
-            var physicalActivityTypes = _physicalActivityTypeService.GetAll();
-            ViewData.Add(PHYSICALACTIVITYTYPES, physicalActivityTypes);
+
+            GetPhysicalActivityTypes();
 
             return View("Form");
         }
@@ -57,6 +56,8 @@ namespace PersonalHealthTracker.WebUI.Controllers
                 // service sends the new activity to the repository (saved)
                 return RedirectToAction(nameof(Index)); // --> Index();
             }
+
+            GetPhysicalActivityTypes();
 
             return View("Form");
         }
@@ -108,5 +109,12 @@ namespace PersonalHealthTracker.WebUI.Controllers
                                                           // we trigger the logic
                                                           // for edit within the Form.cshtml
         }
+
+        private void GetPhysicalActivityTypes()
+        {
+            var physicalActivityTypes = _physicalActivityTypeService.GetAll();
+            ViewData.Add(PHYSICALACTIVITYTYPES, physicalActivityTypes);
+        }
+
     }
 }

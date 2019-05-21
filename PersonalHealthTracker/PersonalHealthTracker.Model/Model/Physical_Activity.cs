@@ -25,8 +25,13 @@ namespace PersonalHealthTracker.Domain.Model
         [Display(Name ="Day of Week")]
         public DayOfWeek dayOfWeek { get; set; }
 
-        // Fully Defined Relationship
+        // Fully Defined Relationship for Property Type
+        [Display(Name = "Physical Activity")]
         public int Physical_Activity_TypeId { get; set; }
         public Physical_Activity_Type Physical_Activity_Type { get; set; }
+
+        // Fully Defined Relationship for App User
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }
