@@ -27,10 +27,7 @@ namespace PersonalHealthTracker.WebUI.Controllers
 
         public IActionResult Register()
         {
-            if(User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            RedirectUserWhenAlreadyLogginIn();
             return View();
         }
 
@@ -70,6 +67,50 @@ namespace PersonalHealthTracker.WebUI.Controllers
 
             // sending back the error(s) to the view (register form)
             return View(vm);
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            RedirectUserWhenAlreadyLogginIn();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel vm)
+        {
+            if(ModelState.IsValid)
+            {
+               var result = await _signInManager.PasswordSignInAsync(vm.Email, vm.Password, vm.RememberMe, false);
+
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Email or Password incorrrect");
+                }
+            }
+
+            return View(vm);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+           await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        private IActionResult RedirectUserWhenAlreadyLogginIn()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return null;
         }
     }
 }
