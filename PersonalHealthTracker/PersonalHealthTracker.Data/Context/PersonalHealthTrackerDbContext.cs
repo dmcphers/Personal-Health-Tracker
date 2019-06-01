@@ -18,6 +18,10 @@ namespace PersonalHealthTracker.Data.Context
         // they map to tables by default
         public DbSet<Physical_Activity> Physical_Activities { get; set; }
         public DbSet<Physical_Activity_Type> Physical_Activity_Types { get; set; }
+        
+        public DbSet<Mental_Activity> Mental_Activities { get; set; }
+        public DbSet<Mental_Activity_Type> Mental_Activity_Types { get; set; }
+
 
         // virtual method designed to be overridden
         // you can provide configuration information for the context
@@ -41,6 +45,12 @@ namespace PersonalHealthTracker.Data.Context
                     new Physical_Activity_Type {Id=2, Description = "Walking" },
                     new Physical_Activity_Type {Id=3, Description = "Swimming" }
                 );
+
+            modelBuilder.Entity<Mental_Activity_Type>().HasData(
+                   new Mental_Activity_Type { Id = 1, Description = "Crossword" },
+                   new Mental_Activity_Type { Id = 2, Description = "Sukoku" },
+                   new Mental_Activity_Type { Id = 3, Description = "Reading" }
+               );
         }
     }
 }

@@ -1,12 +1,11 @@
-﻿using PersonalHealthTracker.Domain.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace PersonalHealthTracker.Domain.Model
 {
-    public class Physical_Activity
+    public class Mental_Activity
     {
 
         public int Id { get; set; } // for DB purposes to make it be identifiable
@@ -18,17 +17,13 @@ namespace PersonalHealthTracker.Domain.Model
         public int Duration { get; set; }
 
         [Required]
-        [Display(Name ="Calories Burned")]
-        public int CaloriesBurned { get; set; }
-
-        [Required]
-        [Display(Name ="Day of Week")]
+        [Display(Name = "Day of Week")]
         public DayOfWeek dayOfWeek { get; set; }
 
-        // Fully Defined Relationship for Physical Activity Type
-        [Display(Name = "Physical Activity")]
-        public int Physical_Activity_TypeId { get; set; }
-        public Physical_Activity_Type Physical_Activity_Type { get; set; }
+        // Fully Defined Relationship for Mental Activity Type
+        [Display(Name = "Mental Activity")]
+        public int Mental_Activity_TypeId { get; set; }
+        public Physical_Activity_Type Mental_Activity_Type { get; set; }
 
         // Fully Defined Relationship for App User
         public string AppUserId { get; set; }
