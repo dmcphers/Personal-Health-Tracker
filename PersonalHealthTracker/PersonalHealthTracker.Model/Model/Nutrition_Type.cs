@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PersonalHealthTracker.Domain.Model
 {
-    class Nutrition_Type
+    public class Nutrition_Type
     {
         public int Id { get; set; } // PK in DB table
 

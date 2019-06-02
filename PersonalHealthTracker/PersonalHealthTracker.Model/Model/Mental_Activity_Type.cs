@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PersonalHealthTracker.Domain.Model
 {
-    class Mental_Activity_Type
+    public class Mental_Activity_Type
     {
         public int Id { get; set; } // PK in DB table
 

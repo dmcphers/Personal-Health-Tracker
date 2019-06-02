@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalHealthTracker.Data.Context;
 
 namespace PersonalHealthTracker.Data.Migrations
 {
     [DbContext(typeof(PersonalHealthTrackerDbContext))]
-    partial class PersonalHealthTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190602221949_add-nutrition-tables-with-seeding-and-relationships")]
+    partial class addnutritiontableswithseedingandrelationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -362,28 +364,6 @@ namespace PersonalHealthTracker.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Sleep", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AppUserId");
-
-                    b.Property<string>("Description")
-                        .IsRequired();
-
-                    b.Property<int>("Hours");
-
-                    b.Property<int>("dayOfWeek");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("Sleep");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -463,13 +443,6 @@ namespace PersonalHealthTracker.Data.Migrations
                         .WithMany()
                         .HasForeignKey("Physical_Activity_TypeId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Sleep", b =>
-                {
-                    b.HasOne("PersonalHealthTracker.Domain.Model.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
                 });
 #pragma warning restore 612, 618
         }

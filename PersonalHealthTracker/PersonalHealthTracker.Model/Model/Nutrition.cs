@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PersonalHealthTracker.Domain.Model
 {
-    class Nutrition
+    public class Nutrition
     {
         public int Id { get; set; } // for DB purposes to make it be identifiable
 
@@ -13,20 +13,17 @@ namespace PersonalHealthTracker.Domain.Model
         public string Description { get; set; }
 
         [Required]
-        public int Duration { get; set; }
-
-        [Required]
-        [Display(Name = "Calories Burned")]
-        public int CaloriesBurned { get; set; }
+        [Display(Name = "Calories")]
+        public int Calories { get; set; }
 
         [Required]
         [Display(Name = "Day of Week")]
         public DayOfWeek dayOfWeek { get; set; }
 
-        // Fully Defined Relationship for Property Type
-        [Display(Name = "Physical Activity")]
-        public int Physical_Activity_TypeId { get; set; }
-        public Physical_Activity_Type Physical_Activity_Type { get; set; }
+        // Fully Defined Relationship for Nutrition Type
+        [Display(Name = "Food")]
+        public int Nutrition_TypeId { get; set; }
+        public Nutrition_Type Nutrition_Type { get; set; }
 
         // Fully Defined Relationship for App User
         public string AppUserId { get; set; }
