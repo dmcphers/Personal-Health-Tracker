@@ -54,12 +54,16 @@ namespace PersonalHealthTracker
         {
             services.AddSingleton<IPhysicalActivityRepository, SqlServerPhysical_ActivityRepository>();
             services.AddSingleton<IPhysicalActivityTypeRepository, SqlServerPhysicalActivityTypeRepository>();
+            services.AddSingleton<IMentalActivityRepository, SqlServerMental_ActivityRepository>();
+            services.AddSingleton<IMentalActivityTypeRepository, SqlServerMentalActivityTypeRepository>();
         }
 
         private void AddServiceImplementation(IServiceCollection services)
         {
             services.AddSingleton<IPhysicalActivityService, PhysicalActivityService>();
             services.AddSingleton<IPhysicalActivityTypeService, PhysicalActivityTypeService>();
+            services.AddSingleton<IMentalActivityService, MentalActivityService>();
+            services.AddSingleton<IMentalActivityTypeService, MentalActivityTypeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

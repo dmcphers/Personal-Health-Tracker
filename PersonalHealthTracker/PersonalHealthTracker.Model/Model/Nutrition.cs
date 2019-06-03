@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PersonalHealthTracker.Domain.Model
 {
-    public class Mental_Activity
+    public class Nutrition
     {
         public int Id { get; set; } // for DB purposes to make it be identifiable
 
@@ -13,16 +13,17 @@ namespace PersonalHealthTracker.Domain.Model
         public string Description { get; set; }
 
         [Required]
-        public int Duration { get; set; }
+        [Display(Name = "Calories")]
+        public int Calories { get; set; }
 
         [Required]
         [Display(Name = "Day of Week")]
         public DayOfWeek dayOfWeek { get; set; }
 
-        // Fully Defined Relationship for Mental Activity Type
-        [Display(Name = "Mental Activity")]
-        public int Mental_Activity_TypeId { get; set; }
-        public Mental_Activity_Type Mental_Activity_Type { get; set; }
+        // Fully Defined Relationship for Nutrition Type
+        [Display(Name = "Food")]
+        public int Nutrition_TypeId { get; set; }
+        public Nutrition_Type Nutrition_Type { get; set; }
 
         // Fully Defined Relationship for App User
         public string AppUserId { get; set; }

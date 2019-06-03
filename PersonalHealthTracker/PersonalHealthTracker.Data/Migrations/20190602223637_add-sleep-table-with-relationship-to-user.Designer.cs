@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalHealthTracker.Data.Context;
 
 namespace PersonalHealthTracker.Data.Migrations
 {
     [DbContext(typeof(PersonalHealthTrackerDbContext))]
-    partial class PersonalHealthTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190602223637_add-sleep-table-with-relationship-to-user")]
+    partial class addsleeptablewithrelationshiptouser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

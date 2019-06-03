@@ -9,6 +9,7 @@
     <Compile Remove="Migrations\20190512032653_add-physicalActivity-physicalActivityType-relationship.cs" />
     <Compile Remove="Migrations\20190512033717_add-physicalActivity-physicalActivityType-relationship2.cs" />
     <Compile Remove="Migrations\20190512041935_add-physicalActivity-physicalActivityType-relationship.cs" />
+    <Compile Remove="Migrations\20190602200635_add-mental-activity-tables-with-seeding-and-relationships.cs" />
   </ItemGroup>
 
   <ItemGroup>

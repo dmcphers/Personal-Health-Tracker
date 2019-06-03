@@ -22,6 +22,10 @@ namespace PersonalHealthTracker.Data.Context
         public DbSet<Mental_Activity> Mental_Activities { get; set; }
         public DbSet<Mental_Activity_Type> Mental_Activity_Types { get; set; }
 
+        public DbSet<Nutrition> Nutrition { get; set; }
+        public DbSet<Nutrition> Nutrition_Types { get; set; }
+
+        public DbSet<Sleep> Sleep { get; set; }
 
         // virtual method designed to be overridden
         // you can provide configuration information for the context
@@ -47,9 +51,17 @@ namespace PersonalHealthTracker.Data.Context
                 );
 
             modelBuilder.Entity<Mental_Activity_Type>().HasData(
-                   new Mental_Activity_Type { Id = 1, Description = "Crossword" },
-                   new Mental_Activity_Type { Id = 2, Description = "Sukoku" },
-                   new Mental_Activity_Type { Id = 3, Description = "Reading" }
+                    new Mental_Activity_Type { Id = 1, Description = "Crossword" },
+                    new Mental_Activity_Type { Id = 2, Description = "Sudoku" },
+                    new Mental_Activity_Type { Id = 3, Description = "Reading" }
+                );
+
+            modelBuilder.Entity<Nutrition_Type>().HasData(
+                   new Nutrition_Type { Id = 1, Description = "Steak" },
+                   new Nutrition_Type { Id = 2, Description = "Bread" },
+                   new Nutrition_Type { Id = 3, Description = "Apple" },
+                   new Nutrition_Type { Id = 4, Description = "Milk" }
+
                );
         }
     }

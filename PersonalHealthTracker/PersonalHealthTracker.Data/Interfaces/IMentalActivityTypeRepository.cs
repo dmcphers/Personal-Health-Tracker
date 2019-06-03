@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PersonalHealthTracker.Data.Interfaces
 {
-    interface IMentalActivityTypeRepository
+    public interface IMentalActivityTypeRepository
     {
         // Read
         Mental_Activity_Type GetById(int id);
