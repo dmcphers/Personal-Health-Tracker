@@ -17,6 +17,7 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
                 // SQL --> Database look for table Physical_Activity
                 // if not found then returns null value rather than exception
                 var Physical_Activity = context.Physical_Activities.SingleOrDefault(p => p.Id == id);
+
                 return Physical_Activity;  
             }
         }
