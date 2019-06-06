@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PersonalHealthTracker.Domain.Model;
 using System;
@@ -62,6 +63,11 @@ namespace PersonalHealthTracker.Data.Context
                    new Nutrition_Type { Id = 3, Description = "Apple" },
                    new Nutrition_Type { Id = 4, Description = "Milk" }
 
+               );
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Name = "User", NormalizedName = "USER"},
+                new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" }
                );
         }
     }

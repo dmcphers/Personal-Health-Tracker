@@ -47,13 +47,35 @@ namespace PersonalHealthTracker.WebUI.Controllers
 
                 var result = await _userManager.CreateAsync(newUser, vm.Password);
 
-                if(result.Succeeded)
+                if(result.Succeeded) // new user was created
                 {
-                    // new user was created
-                    // we can login the user
-                    await _signInManager.SignInAsync(newUser, false);
-                    // send user to the right page (redirect)
-                    return RedirectToAction("Index", "Home"); // /home/index
+
+                    // assign the selected role to the newly created user
+                    if(vm.Email == "admin@abc.com")
+                    {
+                        result = await _userManager.AddToRoleAsync(newUser, "Admin");
+                    }
+                    else
+                    {
+                        result = await _userManager.AddToRoleAsync(newUser, "User");
+                    }
+                   
+
+                    if(result.Succeeded)
+                    {
+                        // we can login the user
+                        await _signInManager.SignInAsync(newUser, false);
+                        
+                        // redirect
+                        if(vm.Email == "admin@abc.com")
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+
+                        return RedirectToAction("Index", "User");
+
+                    }
+                    
                 }
                 else
                 {
