@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalHealthTracker.Data.Context;
 
@@ -15,9 +14,7 @@ namespace PersonalHealthTracker.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -37,23 +34,22 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
                         new
                         {
-                            Id = "967a3c06-3620-4ce9-b51e-481fe57eb8e2",
-                            ConcurrencyStamp = "70f513a2-15ca-4ae2-a3a7-600e0d94db8a",
+                            Id = "5591d9f8-abb7-48ca-a785-883fbb664f19",
+                            ConcurrencyStamp = "1c68c1b2-6bd7-4f4c-9491-bb6f6346569b",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "36794cdc-bcc6-407c-a00f-c0139ea0da32",
-                            ConcurrencyStamp = "0d2c7972-d5e6-4dac-8336-d7999f46c72d",
+                            Id = "79e18139-3b20-4d6d-b1b1-f270a8d591af",
+                            ConcurrencyStamp = "4c19fe96-59c3-40f6-acd0-7fb9d69d48dc",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -62,8 +58,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -82,8 +77,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -194,8 +188,7 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -203,8 +196,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Mental_Activity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AppUserId");
 
@@ -229,8 +221,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Mental_Activity_Type", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -260,8 +251,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Nutrition", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AppUserId");
 
@@ -286,8 +276,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Nutrition_Type", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -322,8 +311,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Physical_Activity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AppUserId");
 
@@ -350,8 +338,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Physical_Activity_Type", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -381,8 +368,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Sleep", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AppUserId");
 

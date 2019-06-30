@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalHealthTracker.Data.Context;
@@ -10,16 +9,14 @@ using PersonalHealthTracker.Data.Context;
 namespace PersonalHealthTracker.Data.Migrations
 {
     [DbContext(typeof(PersonalHealthTrackerDbContext))]
-    [Migration("20190520002529_identity-provider")]
-    partial class identityprovider
+    [Migration("20190611001607_init-for-sqlite")]
+    partial class initforsqlite
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -39,17 +36,31 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "5591d9f8-abb7-48ca-a785-883fbb664f19",
+                            ConcurrencyStamp = "1c68c1b2-6bd7-4f4c-9491-bb6f6346569b",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "79e18139-3b20-4d6d-b1b1-f270a8d591af",
+                            ConcurrencyStamp = "4c19fe96-59c3-40f6-acd0-7fb9d69d48dc",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -68,8 +79,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -180,17 +190,130 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Mental_Activity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AppUserId");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<int>("Duration");
+
+                    b.Property<int>("Mental_Activity_TypeId");
+
+                    b.Property<int>("dayOfWeek");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("Mental_Activity_TypeId");
+
+                    b.ToTable("Mental_Activities");
+                });
+
+            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Mental_Activity_Type", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Mental_Activity_Types");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Crossword"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Sudoku"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Reading"
+                        });
+                });
+
+            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Nutrition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AppUserId");
+
+                    b.Property<int>("Calories");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<int>("Nutrition_TypeId");
+
+                    b.Property<int>("dayOfWeek");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("Nutrition_TypeId");
+
+                    b.ToTable("Nutrition");
+                });
+
+            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Nutrition_Type", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Nutrition_Type");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Steak"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Bread"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Apple"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Milk"
+                        });
                 });
 
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Physical_Activity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AppUserId");
 
@@ -217,8 +340,7 @@ namespace PersonalHealthTracker.Data.Migrations
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Physical_Activity_Type", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -243,6 +365,27 @@ namespace PersonalHealthTracker.Data.Migrations
                             Id = 3,
                             Description = "Swimming"
                         });
+                });
+
+            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Sleep", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AppUserId");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<int>("Hours");
+
+                    b.Property<int>("dayOfWeek");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Sleep");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -290,6 +433,30 @@ namespace PersonalHealthTracker.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Mental_Activity", b =>
+                {
+                    b.HasOne("PersonalHealthTracker.Domain.Model.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("PersonalHealthTracker.Domain.Model.Mental_Activity_Type", "Mental_Activity_Type")
+                        .WithMany()
+                        .HasForeignKey("Mental_Activity_TypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Nutrition", b =>
+                {
+                    b.HasOne("PersonalHealthTracker.Domain.Model.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("PersonalHealthTracker.Domain.Model.Nutrition_Type", "Nutrition_Type")
+                        .WithMany()
+                        .HasForeignKey("Nutrition_TypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Physical_Activity", b =>
                 {
                     b.HasOne("PersonalHealthTracker.Domain.Model.AppUser", "AppUser")
@@ -300,6 +467,13 @@ namespace PersonalHealthTracker.Data.Migrations
                         .WithMany()
                         .HasForeignKey("Physical_Activity_TypeId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PersonalHealthTracker.Domain.Model.Sleep", b =>
+                {
+                    b.HasOne("PersonalHealthTracker.Domain.Model.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
                 });
 #pragma warning restore 612, 618
         }
