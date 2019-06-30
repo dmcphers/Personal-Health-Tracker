@@ -90,6 +90,8 @@ namespace PersonalHealthTracker.WebUI.Controllers
         {
             var physical_activity = _physicalActivityService.GetById(id);
 
+            GetPhysicalActivityTypes();
+
             return View("Form", physical_activity);
         }
 
@@ -104,6 +106,8 @@ namespace PersonalHealthTracker.WebUI.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
+
+            GetPhysicalActivityTypes();
 
             return View("Form", updatedPhysicalActivity); // By passing updated activity
                                                           // we trigger the logic

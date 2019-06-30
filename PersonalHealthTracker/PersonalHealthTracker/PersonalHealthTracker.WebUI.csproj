@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>2604fa8e-b6e7-4fba-a7c5-dab137cb164a</UserSecretsId>
   </PropertyGroup>
 
 
@@ -17,6 +18,13 @@
     <ProjectReference Include="..\PersonalHealthTracker.Data\PersonalHealthTracker.Data.csproj" />
     <ProjectReference Include="..\PersonalHealthTracker.Model\PersonalHealthTracker.Domain.csproj" />
     <ProjectReference Include="..\PersonalHealthTrackerService\PersonalHealthTrackerService.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="pht.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
