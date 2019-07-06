@@ -1,0 +1,90 @@
+﻿@*Model  Definition*@
+
+@model List<Nutrition>
+
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["Error"]
+    </div>
+}
+
+<h1>List of Nutrition Records</h1>
+
+@if (Model.Count > 0)
+{
+    <div>
+        <a class="btn btn-secondary float-right" asp-action="Add" asp-controller="Nutrition">Add</a>
+    </div>
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>Description</th>
+        <th>Calories</th>
+        <th>day Of Week</th>
+        <th></th>
+    </tr>
+
+    @foreach (var nutrition in Model)
+    {
+        <tr>
+            <td>@nutrition.Description</td>
+            <td>@nutrition.Calories</td>
+            <td>@nutrition.dayOfWeek</td>
+            <td>
+                <a asp-controller="Nutrition" asp-action="Detail" asp-route-id="@nutrition.Id">Detail</a> |
+                <a asp-controller="Nutrition" asp-action="Edit" asp-route-id="@nutrition.Id">Edit</a> |
+                <a href="#" class="js-open-modal" data-property-id="@nutrition.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <tr>
+            <td colspan="5">
+                You don't have any Nutrition Records yet - <a href="/Nutrition/Add">Add Nutrition Record</a>
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>*@
+            <div class="modal-body">
+                Are you sure you want to delete that nutrition record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a id="js-delete-button" class="btn btn-primary">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>
+            $('.js-open-modal').on('click', event => {
+                const nutritionId = $(event.target).data('property-id');
+                const url = `/nutrition/delete/${nutritionId}`;
+
+                $('#js-delete-button').attr('href', url);
+
+                $('#delete-confirmation').modal('show');
+            });
+    </script>
+}
