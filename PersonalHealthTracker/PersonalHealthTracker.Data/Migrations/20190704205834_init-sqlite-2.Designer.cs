@@ -9,8 +9,8 @@ using PersonalHealthTracker.Data.Context;
 namespace PersonalHealthTracker.Data.Migrations
 {
     [DbContext(typeof(PersonalHealthTrackerDbContext))]
-    [Migration("20190611001607_init-for-sqlite")]
-    partial class initforsqlite
+    [Migration("20190704205834_init-sqlite-2")]
+    partial class initsqlite2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,15 +43,15 @@ namespace PersonalHealthTracker.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5591d9f8-abb7-48ca-a785-883fbb664f19",
-                            ConcurrencyStamp = "1c68c1b2-6bd7-4f4c-9491-bb6f6346569b",
+                            Id = "ea4472e0-d566-46ea-bafa-549eb0422bcd",
+                            ConcurrencyStamp = "a896126d-3e5f-4cf0-9c32-11f53bea14bc",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "79e18139-3b20-4d6d-b1b1-f270a8d591af",
-                            ConcurrencyStamp = "4c19fe96-59c3-40f6-acd0-7fb9d69d48dc",
+                            Id = "d6b8a61b-4637-4ba6-9f83-b249fc0ca5c2",
+                            ConcurrencyStamp = "b7093b60-d076-4150-bda4-0b50fdf0c751",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -285,7 +285,7 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Nutrition_Type");
+                    b.ToTable("Nutrition_Types");
 
                     b.HasData(
                         new

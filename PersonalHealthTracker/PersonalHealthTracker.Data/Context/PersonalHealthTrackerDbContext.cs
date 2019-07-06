@@ -24,7 +24,7 @@ namespace PersonalHealthTracker.Data.Context
         public DbSet<Mental_Activity_Type> Mental_Activity_Types { get; set; }
 
         public DbSet<Nutrition> Nutrition { get; set; }
-        public DbSet<Nutrition> Nutrition_Types { get; set; }
+        public DbSet<Nutrition_Type> Nutrition_Types { get; set; }
 
         public DbSet<Sleep> Sleep { get; set; }
 

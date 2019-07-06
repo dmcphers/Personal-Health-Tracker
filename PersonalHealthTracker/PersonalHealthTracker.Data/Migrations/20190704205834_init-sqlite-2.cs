@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PersonalHealthTracker.Data.Migrations
 {
-    public partial class initforsqlite : Migration
+    public partial class initsqlite2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,7 +62,7 @@ namespace PersonalHealthTracker.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Nutrition_Type",
+                name: "Nutrition_Types",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -71,7 +71,7 @@ namespace PersonalHealthTracker.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Nutrition_Type", x => x.Id);
+                    table.PrimaryKey("PK_Nutrition_Types", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -266,9 +266,9 @@ namespace PersonalHealthTracker.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Nutrition_Nutrition_Type_Nutrition_TypeId",
+                        name: "FK_Nutrition_Nutrition_Types_Nutrition_TypeId",
                         column: x => x.Nutrition_TypeId,
-                        principalTable: "Nutrition_Type",
+                        principalTable: "Nutrition_Types",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -306,12 +306,12 @@ namespace PersonalHealthTracker.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "5591d9f8-abb7-48ca-a785-883fbb664f19", "1c68c1b2-6bd7-4f4c-9491-bb6f6346569b", "User", "USER" });
+                values: new object[] { "ea4472e0-d566-46ea-bafa-549eb0422bcd", "a896126d-3e5f-4cf0-9c32-11f53bea14bc", "User", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "79e18139-3b20-4d6d-b1b1-f270a8d591af", "4c19fe96-59c3-40f6-acd0-7fb9d69d48dc", "Admin", "ADMIN" });
+                values: new object[] { "d6b8a61b-4637-4ba6-9f83-b249fc0ca5c2", "b7093b60-d076-4150-bda4-0b50fdf0c751", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "Mental_Activity_Types",
@@ -329,22 +329,22 @@ namespace PersonalHealthTracker.Data.Migrations
                 values: new object[] { 3, "Reading" });
 
             migrationBuilder.InsertData(
-                table: "Nutrition_Type",
+                table: "Nutrition_Types",
                 columns: new[] { "Id", "Description" },
                 values: new object[] { 1, "Steak" });
 
             migrationBuilder.InsertData(
-                table: "Nutrition_Type",
+                table: "Nutrition_Types",
                 columns: new[] { "Id", "Description" },
                 values: new object[] { 2, "Bread" });
 
             migrationBuilder.InsertData(
-                table: "Nutrition_Type",
+                table: "Nutrition_Types",
                 columns: new[] { "Id", "Description" },
                 values: new object[] { 3, "Apple" });
 
             migrationBuilder.InsertData(
-                table: "Nutrition_Type",
+                table: "Nutrition_Types",
                 columns: new[] { "Id", "Description" },
                 values: new object[] { 4, "Milk" });
 
@@ -472,7 +472,7 @@ namespace PersonalHealthTracker.Data.Migrations
                 name: "Mental_Activity_Types");
 
             migrationBuilder.DropTable(
-                name: "Nutrition_Type");
+                name: "Nutrition_Types");
 
             migrationBuilder.DropTable(
                 name: "Physical_Activity_Types");
