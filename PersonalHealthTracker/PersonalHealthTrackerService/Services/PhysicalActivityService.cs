@@ -22,6 +22,12 @@ namespace PersonalHealthTrackerService.Services
 
         // delete
         bool Delete(int id);
+
+        // get by date
+        List<Physical_Activity> GetByDate(DateTime activityDate);
+
+        // get by date range
+        List<Physical_Activity> GetByDateRange(DateTime fromDate, DateTime toDate);
     }
 
     public class PhysicalActivityService : IPhysicalActivityService
@@ -57,6 +63,16 @@ namespace PersonalHealthTrackerService.Services
         public Physical_Activity Update(Physical_Activity updatedPhysical_Activity)
         {
             return _physicalActivityRepository.Update(updatedPhysical_Activity);
+        }
+
+        public List<Physical_Activity> GetByDate(DateTime activityDate)
+        {
+            return _physicalActivityRepository.GetByDate(activityDate);
+        }
+
+        public List<Physical_Activity> GetByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return _physicalActivityRepository.GetByDateRange(fromDate, toDate);
         }
     }
 }

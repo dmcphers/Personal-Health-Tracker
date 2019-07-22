@@ -22,10 +22,7 @@
 
 <table class="table">
     <tr>
-        <th>Description</th>
-        <th>Duration</th>
-        <th>day Of Week</th>
-        <th></th>
+        <th>Header</th>
     </tr>
 
     @foreach (var mental_activity in Model)
@@ -33,7 +30,7 @@
         <tr>
             <td>@mental_activity.Description</td>
             <td>@mental_activity.Duration</td>
-            <td>@mental_activity.dayOfWeek</td>
+            <td>@mental_activity.Date</td>
             <td>
                 <a asp-controller="Mental_Activity" asp-action="Detail" asp-route-id="@mental_activity.Id">Detail</a> |
                 <a asp-controller="Mental_Activity" asp-action="Edit" asp-route-id="@mental_activity.Id">Edit</a> |

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PersonalHealthTracker.Data.Migrations
 {
-    public partial class initsqlite2 : Migration
+    public partial class initsqlite7changedateformatformodels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -201,7 +201,7 @@ namespace PersonalHealthTracker.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Description = table.Column<string>(nullable: false),
                     Hours = table.Column<int>(nullable: false),
-                    dayOfWeek = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
                     AppUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -223,7 +223,7 @@ namespace PersonalHealthTracker.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Description = table.Column<string>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
-                    dayOfWeek = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
                     Mental_Activity_TypeId = table.Column<int>(nullable: false),
                     AppUserId = table.Column<string>(nullable: true)
                 },
@@ -252,7 +252,7 @@ namespace PersonalHealthTracker.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Description = table.Column<string>(nullable: false),
                     Calories = table.Column<int>(nullable: false),
-                    dayOfWeek = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
                     Nutrition_TypeId = table.Column<int>(nullable: false),
                     AppUserId = table.Column<string>(nullable: true)
                 },
@@ -282,7 +282,7 @@ namespace PersonalHealthTracker.Data.Migrations
                     Description = table.Column<string>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
                     CaloriesBurned = table.Column<int>(nullable: false),
-                    dayOfWeek = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
                     Physical_Activity_TypeId = table.Column<int>(nullable: false),
                     AppUserId = table.Column<string>(nullable: true)
                 },
@@ -306,12 +306,12 @@ namespace PersonalHealthTracker.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ea4472e0-d566-46ea-bafa-549eb0422bcd", "a896126d-3e5f-4cf0-9c32-11f53bea14bc", "User", "USER" });
+                values: new object[] { "45a09395-a1ec-4a63-9892-aa1a530aa493", "29205dcb-fbd7-4e8e-99d8-d6c82404ca22", "User", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "d6b8a61b-4637-4ba6-9f83-b249fc0ca5c2", "b7093b60-d076-4150-bda4-0b50fdf0c751", "Admin", "ADMIN" });
+                values: new object[] { "b46eea54-da13-40e6-b38e-094813b0dc74", "9a0b4d43-a59a-43e4-8398-14e20fe0ef25", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "Mental_Activity_Types",

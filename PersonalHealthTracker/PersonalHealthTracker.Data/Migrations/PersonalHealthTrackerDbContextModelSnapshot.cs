@@ -41,15 +41,15 @@ namespace PersonalHealthTracker.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ea4472e0-d566-46ea-bafa-549eb0422bcd",
-                            ConcurrencyStamp = "a896126d-3e5f-4cf0-9c32-11f53bea14bc",
+                            Id = "45a09395-a1ec-4a63-9892-aa1a530aa493",
+                            ConcurrencyStamp = "29205dcb-fbd7-4e8e-99d8-d6c82404ca22",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "d6b8a61b-4637-4ba6-9f83-b249fc0ca5c2",
-                            ConcurrencyStamp = "b7093b60-d076-4150-bda4-0b50fdf0c751",
+                            Id = "b46eea54-da13-40e6-b38e-094813b0dc74",
+                            ConcurrencyStamp = "9a0b4d43-a59a-43e4-8398-14e20fe0ef25",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -200,14 +200,14 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.Property<string>("AppUserId");
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<string>("Description")
                         .IsRequired();
 
                     b.Property<int>("Duration");
 
                     b.Property<int>("Mental_Activity_TypeId");
-
-                    b.Property<int>("dayOfWeek");
 
                     b.HasKey("Id");
 
@@ -257,12 +257,12 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.Property<int>("Calories");
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<string>("Description")
                         .IsRequired();
 
                     b.Property<int>("Nutrition_TypeId");
-
-                    b.Property<int>("dayOfWeek");
 
                     b.HasKey("Id");
 
@@ -317,14 +317,14 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.Property<int>("CaloriesBurned");
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<string>("Description")
                         .IsRequired();
 
                     b.Property<int>("Duration");
 
                     b.Property<int>("Physical_Activity_TypeId");
-
-                    b.Property<int>("dayOfWeek");
 
                     b.HasKey("Id");
 
@@ -372,12 +372,12 @@ namespace PersonalHealthTracker.Data.Migrations
 
                     b.Property<string>("AppUserId");
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<string>("Description")
                         .IsRequired();
 
                     b.Property<int>("Hours");
-
-                    b.Property<int>("dayOfWeek");
 
                     b.HasKey("Id");
 

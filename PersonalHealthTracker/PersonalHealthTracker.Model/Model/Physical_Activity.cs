@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace PersonalHealthTracker.Domain.Model
@@ -22,8 +23,7 @@ namespace PersonalHealthTracker.Domain.Model
         public int CaloriesBurned { get; set; }
 
         [Required]
-        [Display(Name ="Day of Week")]
-        public DayOfWeek dayOfWeek { get; set; }
+        public DateTime Date { get; set; }
 
         // Fully Defined Relationship for Property Type
         [Display(Name = "Physical Activity")]

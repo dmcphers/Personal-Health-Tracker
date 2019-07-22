@@ -24,7 +24,7 @@
     <tr>
         <th>Description</th>
         <th>Calories</th>
-        <th>day Of Week</th>
+        <th>Date</th>
         <th></th>
     </tr>
 
@@ -33,7 +33,7 @@
         <tr>
             <td>@nutrition.Description</td>
             <td>@nutrition.Calories</td>
-            <td>@nutrition.dayOfWeek</td>
+            <td>@nutrition.Date</td>
             <td>
                 <a asp-controller="Nutrition" asp-action="Detail" asp-route-id="@nutrition.Id">Detail</a> |
                 <a asp-controller="Nutrition" asp-action="Edit" asp-route-id="@nutrition.Id">Edit</a> |

@@ -7,11 +7,15 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
   font-size: 14px;
+  background-color: tan;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -23,6 +27,7 @@ html {
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
+  /*border-bottom: 2px solid red;*/
 }
 
 .box-shadow {

@@ -22,6 +22,12 @@ namespace PersonalHealthTrackerService.Services
 
         // delete
         bool Delete(int id);
+
+        // get by day
+        List<Sleep> GetByDate(DateTime sleepDate);
+
+        // get by date range
+        List<Sleep> GetByDateRange(DateTime fromDate, DateTime toDate);
     }
 
     public class SleepService : ISleepService
@@ -57,6 +63,16 @@ namespace PersonalHealthTrackerService.Services
         public Sleep Update(Sleep updatedSleepRec)
         {
             return _sleepRepository.Update(updatedSleepRec);
+        }
+
+        public List<Sleep> GetByDate(DateTime sleepDate)
+        {
+            return _sleepRepository.GetByDate(sleepDate);
+        }
+
+        public List<Sleep> GetByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return _sleepRepository.GetByDateRange(fromDate, toDate);
         }
     }
 }

@@ -1,0 +1,151 @@
+﻿@*Model  Definition*@
+
+@model PersonalHealthTracker.Models.DailySummaryViewModel
+
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["Error"]
+    </div>
+}
+
+<h1>Date Range Summary</h1>
+@*
+    @if (Model.Count > 0)
+    {
+        <div>
+            <a class="btn btn-secondary float-right" asp-action="Add" asp-controller="Physical_Activity">Add</a>
+        </div>
+    }
+*@
+
+<br />
+
+<div style="display: flex; border: 2px solid black">
+    <h3 style="margin: auto">@Model.PA.FirstOrDefault().Date.ToString("MM/dd/yyyy")</h3>
+    <h3>to</h3>
+    <h3 style="margin: auto">@Model.PA.LastOrDefault().Date.ToString("MM/dd/yyyy")</h3>
+</div>
+
+<br />
+
+<div style="display: flex; margin: auto; border: 2px solid black">
+    @*<div style="margin: auto; margin-top: 5px">
+        <h2>Date</h2>
+        <ul>
+            @foreach (var item in Model.PA)
+            {
+                <li>@item.Date.ToString("MM/dd/yyyy")</li>
+            }
+        </ul>
+    </div>*@
+    <div style="margin: auto; margin-top: 5px">
+        <h2>Physical Activity</h2>
+        <div>
+            @foreach (var item in Model.PA)
+            {
+            <div>
+                @item.Description
+            </div>
+            }
+        </div>
+    </div>
+    <div style="margin: auto; margin-top: 5px">
+        <h2>Mental Activity</h2>
+        <div>
+            @foreach (var item in Model.MA)
+            {
+            <div>
+                @item.Description
+            </div>
+                
+            }
+        </div>
+    </div>
+    <div style="margin: auto; margin-top: 5px">
+        <h2>Nutrition</h2>
+        <div>
+            @foreach (var item in Model.NUT)
+            {
+            <div>
+                @item.Description
+            </div>
+                
+            }
+        </div>
+    </div>
+    <div style="margin: auto; margin-top: 5px">
+        <h2>Sleep</h2>
+        <div>
+            @foreach (var item in Model.SLP)
+            {
+            <div>
+                @item.Description
+            </div>
+                
+            }
+        </div>
+    </div>
+
+</div>
+@*<table class="table">
+    <tr>
+        <th>Date</th>
+        <th>Physical Activity</th>
+        <th>Mental Activity</th>
+        <th>Nutrition</th>
+        <th>Sleep</th>
+    </tr>
+
+
+    @foreach (var item in Model.PA)
+    {
+        @foreach (var itema in Model.MA)
+        {
+            @foreach (var itemb in Model.NUT)
+            {
+                @foreach (var itemc in Model.SLP)
+                {
+
+                    <tr>
+                        <td>@item.Date</td>
+                        <td>@item.Description</td>
+                        <td>@itema.Description</td>
+                        <td>@itemb.Description</td>
+                        <td>@itemc.Description</td>
+
+                    </tr>
+                }
+            }
+        }
+    }*@
+
+
+
+    @*
+                @foreach (var physical_activity in Model)
+                {
+            <tr>
+                <td>@physical_activity.Description</td>
+                <td>@physical_activity.Duration</td>
+                <td>@physical_activity.CaloriesBurned</td>
+                <td>@physical_activity.dayOfWeek</td>
+                <td>
+                    <a asp-controller="Physical_Activity" asp-action="Detail" asp-route-id="@physical_activity.Id">Detail</a> |
+                    <a asp-controller="Physical_Activity" asp-action="Edit" asp-route-id="@physical_activity.Id">Edit</a> |
+                    <a href="#" class="js-open-modal" data-property-id="@physical_activity.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+                @if (Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan="5">
+                            You don't have any Physical Activities yet - <a href="/Physical_Activity/Add">Add Activity</a>
+                        </td>
+                    </tr>
+                }
+
+    *@
+@*</table>*@
