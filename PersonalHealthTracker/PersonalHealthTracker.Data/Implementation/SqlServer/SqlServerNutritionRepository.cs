@@ -81,6 +81,24 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
 
                 return false;
             }
+
         }
+
+        public List<Nutrition> GetByDate(DateTime nutritionDate)
+        {
+            using (var context = new PersonalHealthTrackerDbContext())
+            {
+                return context.Nutrition.Where(p => p.Date == nutritionDate).ToList();
+            }
+        }
+
+        public List<Nutrition> GetByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            using (var context = new PersonalHealthTrackerDbContext())
+            {
+                return context.Nutrition.Where(p => p.Date >= fromDate && p.Date <= toDate).ToList();
+            }
+        }
+
     }
 }

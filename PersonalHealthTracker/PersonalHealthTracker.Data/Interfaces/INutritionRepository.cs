@@ -19,5 +19,11 @@ namespace PersonalHealthTracker.Data.Interfaces
 
             // delete
             bool Delete(int id);
-        }
+
+            // get by day
+            List<Nutrition> GetByDate(DateTime nutritionDate);
+
+            // get by date range
+            List<Nutrition> GetByDateRange(DateTime fromDate, DateTime toDate);
+    }
 }

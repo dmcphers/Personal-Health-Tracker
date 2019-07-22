@@ -22,6 +22,12 @@ namespace PersonalHealthTrackerService.Services
 
         // delete
         bool Delete(int id);
+
+        // get by day
+        List<Nutrition> GetByDate(DateTime nutritionDate);
+
+        // get by date range
+        List<Nutrition> GetByDateRange(DateTime fromDate, DateTime toDate);
     }
 
     public class NutritionService : INutritionService
@@ -57,6 +63,16 @@ namespace PersonalHealthTrackerService.Services
         public Nutrition Update(Nutrition updatedNutritionRec)
         {
             return _nutritionRepository.Update(updatedNutritionRec);
+        }
+
+        public List<Nutrition> GetByDate(DateTime nutritionDate)
+        {
+            return _nutritionRepository.GetByDate(nutritionDate);
+        }
+
+        public List<Nutrition> GetByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return _nutritionRepository.GetByDateRange(fromDate, toDate);
         }
     }
 }

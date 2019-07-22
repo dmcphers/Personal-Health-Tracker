@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 namespace PersonalHealthTracker.Data.Implementation.SqlServer
-{ 
+{
     public class SqlServerPhysical_ActivityRepository : IPhysicalActivityRepository
     {
 
@@ -17,7 +17,7 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
                 // SQL --> Database look for table Physical_Activity
                 // if not found then returns null value rather than exception
                 var Physical_Activity = context.Physical_Activities.SingleOrDefault(p => p.Id == id);
-                return Physical_Activity;  
+                return Physical_Activity;
             }
         }
 
@@ -73,7 +73,7 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
                 context.SaveChanges();
 
                 // check if entity/model exists
-                if(GetById(id) == null)
+                if (GetById(id) == null)
                 {
                     return true;
                 }
@@ -82,6 +82,21 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
             }
         }
 
-       
+        public List<Physical_Activity> GetByDate(DateTime activityDate)
+        {
+            using (var context = new PersonalHealthTrackerDbContext())
+            {
+                return context.Physical_Activities.Where(p => p.Date == activityDate).ToList();
+            }
+        }
+
+        public List<Physical_Activity> GetByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            using (var context = new PersonalHealthTrackerDbContext())
+            {
+                return context.Physical_Activities.Where(p => p.Date >= fromDate && p.Date <= toDate).ToList();
+            }
+        }
+
     }
 }

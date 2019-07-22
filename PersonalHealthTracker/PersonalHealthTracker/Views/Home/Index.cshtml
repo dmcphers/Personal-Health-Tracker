@@ -1,8 +1,107 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model SearchViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 4 DatePicker</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<form action="/" method="post">
+    <div class="container" style="width: auto; height: 50%;">
+        <div class="row" style="margin-bottom: 20px; height: 200px;">
+            <div class="col-md" style="width: auto; height: auto; display: flex; align-items: center; justify-content: center;">
+                <button type="submit" class="btn btn-xl btn-primary" style="height: 50%; width: 50%" asp-action="Index" asp-controller="Physical_Activity">Physical Activities</button>
+            </div>
+            <div class="col-md" style="width: auto; height: auto; display: flex; align-items: center; justify-content: center; margin: 0px">
+                <button type="submit" class="btn btn-xl btn-primary" style="height: 50%; width: 50%" asp-action="Index" asp-controller="Mental_Activity">Mental Activities</button>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 20px; height: 200px;">
+            <div class="col-md" style="width: auto; height: auto; display: flex; align-items: center; justify-content: center; margin: 0px">
+                <button type="submit" class="btn btn-xl btn-primary" style="height: 50%; width: 50%" asp-action="Index" asp-controller="Nutrition">Nutrition</button>
+            </div>
+            <div class="col-md" style="width: auto; height: auto; display: flex; align-items: center; justify-content: center; margin: 0px">
+                <button type="submit" class="btn btn-xl btn-primary" style="height: 50%; width: 50%" asp-action="Index" asp-controller="Sleep">Sleep</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div style="text-align: center">
+<form asp-action="DailySummary" asp-controller="Home" method="post">
+
+    <br />
+    <div>
+        <input class="form-control" style="width: 25%; justify-content: center; margin-left: auto; margin-right: auto" asp-for="dateViewModel.searchDate" type="date" width="276" />
+
+        <button type="submit" class="btn btn-primary" style="width: 25%">View Date Summary</button>
+    </div>
+   
+
+</form>
+
+<form asp-action="DateRangeSummary" asp-controller="Home" method="post">
+
+    <br />
+    <div>
+        <input class="form-control" style="width: 25%; margin-left: auto; margin-right: auto" asp-for="dateRangeViewModel.fromDate" type="date" width="276" />
+        <input class="form-control" style="width: 25%; margin-left: auto; margin-right: auto" asp-for="dateRangeViewModel.toDate" type="date" width="276" />
+
+        <button type="submit" class="btn btn-primary" style="width: 25%">View Date Range Summary</button>
+    </div>
+    
+
+</form>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<button onclick="alert($datepicker.value())">date entered</button>*@
+
+
+@*<script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+        var $datepicker = $('#datepicker').datepicker();
+    </script>*@
+
+
+
+
+
+
+
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+    <div>
+        <a asp-controller="home" asp-action="DailySummary" class="nav-link text-dark">View Daily Summary</a>
+    </div>*@
+
+
+

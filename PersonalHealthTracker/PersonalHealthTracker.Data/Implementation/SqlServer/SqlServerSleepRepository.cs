@@ -81,5 +81,21 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
                 return false;
             }
         }
+
+        public List<Sleep> GetByDate(DateTime sleepDate)
+        {
+            using (var context = new PersonalHealthTrackerDbContext())
+            {
+                return context.Sleep.Where(p => p.Date == sleepDate).ToList();
+            }
+        }
+
+        public List<Sleep> GetByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            using (var context = new PersonalHealthTrackerDbContext())
+            {
+                return context.Sleep.Where(p => p.Date <= fromDate && p.Date <= toDate).ToList();
+            }
+        }
     }
 }

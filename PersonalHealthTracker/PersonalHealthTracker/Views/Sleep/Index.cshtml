@@ -24,7 +24,7 @@
     <tr>
         <th>Description</th>
         <th>Hours</th>
-        <th>day Of Week</th>
+        <th>Date</th>
         <th></th>
     </tr>
 
@@ -33,11 +33,11 @@
         <tr>
             <td>@sleepRec.Description</td>
             <td>@sleepRec.Hours</td>
-            <td>@sleepRec.dayOfWeek</td>
+            <td>@sleepRec.Date</td>
             <td>
                 <a asp-controller="Sleep" asp-action="Detail" asp-route-id="@sleepRec.Id">Detail</a> |
                 <a asp-controller="Sleep" asp-action="Edit" asp-route-id="@sleepRec.Id">Edit</a> |
-                <a href="#" class="js-open-modal" data-property-id="@sleepRec">Delete</a>
+                <a href="#" class="js-open-modal" data-property-id="@sleepRec.Id">Delete</a>
             </td>
         </tr>
     }

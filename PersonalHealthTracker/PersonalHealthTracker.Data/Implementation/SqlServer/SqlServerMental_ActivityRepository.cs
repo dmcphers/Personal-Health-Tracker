@@ -83,6 +83,22 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
             }
         }
 
+        public List<Mental_Activity> GetByDate(DateTime activityDate)
+        {
+            using (var context = new PersonalHealthTrackerDbContext())
+            {
+                return context.Mental_Activities.Where(p => p.Date == activityDate).ToList();
+            }
+        }
+
+        public List<Mental_Activity> GetByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            using (var context = new PersonalHealthTrackerDbContext())
+            {
+                return context.Mental_Activities.Where(p => p.Date >= fromDate && p.Date <= toDate).ToList();
+            }
+        }
+
 
     }
 }

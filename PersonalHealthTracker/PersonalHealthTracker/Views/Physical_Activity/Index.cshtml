@@ -25,7 +25,7 @@
         <th>Description</th>
         <th>Duration</th>
         <th>Calories Burned</th>
-        <th>day Of Week</th>
+        <th>Date</th>
         <th></th>
     </tr>
 
@@ -35,7 +35,7 @@
             <td>@physical_activity.Description</td>
             <td>@physical_activity.Duration</td>
             <td>@physical_activity.CaloriesBurned</td>
-            <td>@physical_activity.dayOfWeek</td>
+            <td>@physical_activity.Date</td>
             <td>
                 <a asp-controller="Physical_Activity" asp-action="Detail" asp-route-id="@physical_activity.Id">Detail</a> |
                 <a asp-controller="Physical_Activity" asp-action="Edit" asp-route-id="@physical_activity.Id">Edit</a> |
@@ -55,6 +55,7 @@
 
 
 </table>
+
 
 <!-- Modal -->
 <div class="modal fade" id="delete-confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

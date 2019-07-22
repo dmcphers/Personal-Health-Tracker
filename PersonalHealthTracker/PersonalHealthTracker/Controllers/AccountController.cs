@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PersonalHealthTracker.Controllers;
+using PersonalHealthTracker.WebUI.Controllers;
 using PersonalHealthTracker.Domain.Model;
 using PersonalHealthTracker.Models;
 using Microsoft.AspNetCore.Mvc;

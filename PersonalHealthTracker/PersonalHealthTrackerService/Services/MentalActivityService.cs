@@ -22,6 +22,12 @@ namespace PersonalHealthTrackerService.Services
 
         // delete
         bool Delete(int id);
+
+        // get by day
+        List<Mental_Activity> GetByDate(DateTime activityDate);
+
+        // get by date range
+        List<Mental_Activity> GetByDateRange(DateTime fromDate, DateTime toDate);
     }
 
     public class MentalActivityService : IMentalActivityService
@@ -57,6 +63,16 @@ namespace PersonalHealthTrackerService.Services
         public Mental_Activity Update(Mental_Activity updatedMental_Activity)
         {
             return _mentalActivityRepository.Update(updatedMental_Activity);
+        }
+
+        public List<Mental_Activity> GetByDate(DateTime activityDate)
+        {
+            return _mentalActivityRepository.GetByDate(activityDate);
+        }
+
+        public List<Mental_Activity> GetByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return _mentalActivityRepository.GetByDateRange(fromDate, toDate);
         }
     }
 }

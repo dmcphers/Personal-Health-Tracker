@@ -1,0 +1,119 @@
+﻿@*Model  Definition*@
+
+@model PersonalHealthTracker.Models.DailySummaryViewModel
+
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["Error"]
+    </div>
+}
+
+<h1>DailySummary</h1>
+
+<br />
+
+<h2>@Model.PA.FirstOrDefault().Date.ToString("MM/dd/yyyy")</h2>
+
+<br />
+
+<div style="display: flex">
+
+<div style="margin: auto">
+    <h2>Physical Activity</h2>
+    <ul>
+    @foreach (var item in Model.PA)
+    {
+        <li>@item.Description</li>
+    }
+    </ul>
+</div>
+<div style="margin: auto">
+    <h2>Mental Activity</h2>
+    <ul>
+    @foreach (var item in Model.MA)
+    {
+        <li>@item.Description</li>
+    }
+    </ul>
+</div>
+<div style="margin: auto">
+    <h2>Nutrition</h2>
+    <ul>
+    @foreach (var item in Model.NUT)
+    {
+        <li>@item.Description</li>
+    }
+    </ul>
+</div>
+<div style="margin: auto">
+    <h2>Sleep</h2>
+    <ul>
+    @foreach (var item in Model.SLP)
+    {
+        <li>@item.Hours</li>
+    }
+    </ul>
+</div>
+
+</div>
+
+@*<table class="table">
+    <tr>
+
+        <th>Physical Activity</th>
+        <th>Mental Activity</th>
+        <th>Nutrition</th>
+        <th>Sleep</th>
+    </tr>
+    @foreach (var item in Model.PA)
+    {
+        @foreach (var itema in Model.MA)
+        {
+            @foreach (var itemb in Model.NUT)
+            {
+                @foreach (var itemc in Model.SLP)
+                {
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@itema.Description</td>
+                        <td>@itemb.Description</td>
+                        <td>@itemc.Hours</td>
+                    </tr>
+                }
+            }
+        }
+    }*@
+@*</table>*@
+
+
+
+@*<tr>
+        @foreach (var item in Model.PA)
+        {
+            <td>@item.Description</td>
+            @if (Model.PA.Count > 1)
+            { <tr></tr>}
+        }
+        @foreach (var itema in Model.MA)
+        {
+            <td>@itema.Description</td>
+        }
+        @foreach (var itemb in Model.NUT)
+        {
+            <td>@itemb.Description</td>
+        }
+        @foreach (var itemc in Model.SLP)
+        {
+            <td>@itemc.Description</td>
+        }
+    </tr>*@
+
+
+
+
+
+
+
+
+
