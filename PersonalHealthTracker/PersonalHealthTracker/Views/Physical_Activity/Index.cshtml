@@ -2,7 +2,9 @@
 
 @model List<Physical_Activity>
 
-@if(ViewData["Error"] != null)
+
+
+@if (ViewData["Error"] != null)
 {
     <div class="alert alert-danger" role="alert">
         @ViewData["Error"]
@@ -56,6 +58,8 @@
 
 </table>
 
+<a asp-action="PAChart" asp-controller="Chart">PAChart</a>
+
 
 <!-- Modal -->
 <div class="modal fade" id="delete-confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,15 +84,15 @@
 
 @section Scripts
     {
-        <script>
-            $('.js-open-modal').on('click', event => {
-                const physical_activityId = $(event.target).data('property-id');
-                const url = `/physical_activity/delete/${physical_activityId}`;
+    <script>
+        $('.js-open-modal').on('click', event => {
+            const physical_activityId = $(event.target).data('property-id');
+            const url = `/physical_activity/delete/${physical_activityId}`;
 
-                $('#js-delete-button').attr('href', url);
+            $('#js-delete-button').attr('href', url);
 
-                $('#delete-confirmation').modal('show');
-            });
-        </script>
-    }
+            $('#delete-confirmation').modal('show');
+        });
+    </script>
+}
 

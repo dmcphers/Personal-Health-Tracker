@@ -36,7 +36,7 @@ namespace PersonalHealthTracker.WebUI.Controllers
 
         public IActionResult PAChart()
         {
-           
+            
             return View();
         }
         
@@ -45,13 +45,14 @@ namespace PersonalHealthTracker.WebUI.Controllers
 
             //var fromDate = "07/12/2019";
             //var toDate = "07/13/2019";
-
             var fromDate = Convert.ToDateTime(dateRangeView.fromDate);
             var toDate = Convert.ToDateTime(dateRangeView.toDate);
+
 
             DailySummaryViewModel dailySummaryViewModel = new DailySummaryViewModel();
 
             dailySummaryViewModel.PA = _physicalActivityService.GetByDateRange(fromDate, toDate);
+            
 
             return Json(dailySummaryViewModel.PA);
 
