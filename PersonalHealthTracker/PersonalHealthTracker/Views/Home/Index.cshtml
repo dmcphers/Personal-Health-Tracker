@@ -1,18 +1,77 @@
 ﻿@model SearchViewModel
 
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 4 DatePicker</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-</head>
+<div class="row" >
+    <div class="col">
+        <div class="card mb-5" >
+            <div class="card-body text-center">
+                <a asp-action="Index" asp-controller="Physical_Activity">Physical Activities</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <a asp-action="Index" asp-controller="Mental_Activity">Mental Activities</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <a asp-action="Index" asp-controller="Nutrition">Nutrition</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <a asp-action="Index" asp-controller="Sleep">Sleep</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* code for form controls to pass dates to controllers *@
+<div class="row">
+    <div class="col-12 ml-auto mr-auto">
+        <div class="card mb-4">
+            <div class="card-body">
+                <form asp-action="DailySummary" asp-controller="Home" method="post">
+                    <br />
+                    <div>
+                        <input class="form-control" asp-for="dateViewModel.searchDate" type="date" />
+
+                        <button type="submit" class="btn btn-primary">View Date Summary</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+        <div class="col-12 ml-auto mr-auto">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form asp-action="DateRangeSummary" asp-controller="Home" method="post">
+                        <br />
+                        <div>
+                            <input class="form-control" asp-for="dateRangeViewModel.fromDate" type="date" width="276" />
+                            <input class="form-control" asp-for="dateRangeViewModel.toDate" type="date" width="276" />
+
+                            <button type="submit" class="btn btn-primary">View Date Range Summary</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
 
 
-<form action="/" method="post">
+
+@*<form action="/" method="post">
     <div class="container" style="width: auto; height: 50%;">
         <div class="row" style="margin-bottom: 20px; height: 200px;">
             <div class="col-md" style="width: auto; height: auto; display: flex; align-items: center; justify-content: center;">
@@ -31,9 +90,9 @@
             </div>
         </div>
     </div>
-</form>
+</form>*@
 
-<div style="text-align: center">
+@*<div style="text-align: center">
 <form asp-action="DailySummary" asp-controller="Home" method="post">
 
     <br />
@@ -44,9 +103,9 @@
     </div>
    
 
-</form>
+</form>*@
 
-<form asp-action="PAChart" asp-controller="Chart" method="post">
+@*<form asp-action="PAChart" asp-controller="Chart" method="post">
 
     <br />
     <div>
@@ -58,7 +117,7 @@
     
 
 </form>
-</div>
+</div>*@
 
 
 

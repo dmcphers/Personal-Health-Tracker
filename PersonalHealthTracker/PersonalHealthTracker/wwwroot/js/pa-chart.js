@@ -12,7 +12,7 @@ $('.js-chart-with-date-range').click(() => {
 });
 
 function getPaData(fromDate, toDate) {
-    /* https://api.jquery.com/jQuery.get/#jQuery-get-settings */
+    
     $.get({
         url: '/chart/GetPAChartData',
         data: {
