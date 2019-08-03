@@ -94,7 +94,7 @@ namespace PersonalHealthTracker.Data.Implementation.SqlServer
         {
             using (var context = new PersonalHealthTrackerDbContext())
             {
-                return context.Sleep.Where(p => p.Date <= fromDate && p.Date <= toDate).ToList();
+                return context.Sleep.Where(p => p.Date >= fromDate && p.Date <= toDate).ToList();
             }
         }
     }

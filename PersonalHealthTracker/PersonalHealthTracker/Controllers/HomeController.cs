@@ -73,6 +73,25 @@ namespace PersonalHealthTracker.WebUI.Controllers
             return View(dailySummaryViewModel);
         }
 
+        public IActionResult DateRangeSummary2(SearchViewModel searchView)
+        {
+            //dayOfWeek = DayOfWeek.Monday;
+            var fromDate = Convert.ToDateTime(searchView.dateRangeViewModel.fromDate);
+            var toDate = Convert.ToDateTime(searchView.dateRangeViewModel.toDate);
+
+            DailySummaryViewModel dailySummaryViewModel = new DailySummaryViewModel();
+
+            //var dateshort = test;
+
+            dailySummaryViewModel.PA = _physicalActivityService.GetByDateRange(fromDate, toDate);
+            dailySummaryViewModel.MA = _mentalActivityService.GetByDateRange(fromDate, toDate);
+            dailySummaryViewModel.NUT = _nutritionService.GetByDateRange(fromDate, toDate);
+            dailySummaryViewModel.SLP = _sleepService.GetByDateRange(fromDate, toDate);
+
+
+            return View(dailySummaryViewModel);
+        }
+
 
 
         //[HttpPost]

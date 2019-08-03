@@ -1,0 +1,81 @@
+﻿
+@model DateRangeViewModel
+
+<h1>Sleep Chart</h1>
+
+@*<div class="container">
+    <div id="paChart"></div>*@
+
+
+<div>
+    <label>From:</label>
+    <input class="form-control js-from-date" type="date" />
+    <br />
+    <label>To:</label>
+    <input class="form-control js-to-date" type="date" />
+    <br />
+    <button class="btn btn-primary js-chart-with-date-range">View Date Range Graph</button>
+</div>
+
+
+<div class="container">
+    <div id="slpChart">
+        Please, select a date From and To in order to generate the chart
+    </div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    @*<script src="~/lib/node_modules/moment/moment.min.js"></script>*@
+
+    @*<script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            $.get('GetPAChartData', function (d) {
+
+                data = google.visualization.arrayToDataTable(d, false);
+
+                var option = {
+                    title: "Real-Time Chart",
+                    width: 900,
+                    height: 650,
+                    legend: { position: 'none' },
+                    vAxis: { viewWindow: { min: -1, max: 1000 }, baselineColor: 'transparent' },
+                    chartArea: {
+                        height: '80%', width: '85%', left: 100,
+                        backgroundColor: { stroke: "gray", strokeWidth: 1 }
+                    },
+                    pointSize: 10
+                };
+                data.addColumn('datetime', 'TimeStamp');
+                data.addColumn('number', 'Value');
+                chart = new google.visualization.LineChart(document.getElementById('paChart'));*@
+    @*//chart.draw(data, option);
+                        var date = new Date(d.date);
+                        //var time = { v: date, f: date.format('mm/dd/yyyy') };
+                        var val = d.caloriesBurned;
+                        data.addRow([date, val]);
+                        //if (data.getNumberOfRows() > 20) {
+                        //    data.removeRow(0);
+                        //}
+                        chart.draw(data, option);
+                    })
+                }
+            </script>
+        }
+
+        <form asp-action="GetPAChartData" asp-controller="Chart" method="post">
+            <br />
+            <div>
+                <input class="form-control" style="width: 25%; margin-left: auto; margin-right: auto" asp-for="fromDate" type="date" width="276" />
+                <input class="form-control" style="width: 25%; margin-left: auto; margin-right: auto" asp-for="toDate" type="date" width="276" />
+
+                <button type="submit" class="btn btn-primary" style="width: 25%">View Date Range Graph</button>
+            </div>
+        </form>*@
+    <script type="text/javascript" src="/js/slp-chart.js"></script>
+}
+

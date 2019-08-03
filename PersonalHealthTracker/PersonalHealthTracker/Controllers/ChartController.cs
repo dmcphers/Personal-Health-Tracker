@@ -36,27 +36,81 @@ namespace PersonalHealthTracker.WebUI.Controllers
 
         public IActionResult PAChart()
         {
-            
             return View();
         }
         
         public JsonResult GetPAChartData(DateRangeViewModel dateRangeView)
         {
-
             //var fromDate = "07/12/2019";
             //var toDate = "07/13/2019";
             var fromDate = Convert.ToDateTime(dateRangeView.fromDate);
             var toDate = Convert.ToDateTime(dateRangeView.toDate);
 
-
             DailySummaryViewModel dailySummaryViewModel = new DailySummaryViewModel();
 
             dailySummaryViewModel.PA = _physicalActivityService.GetByDateRange(fromDate, toDate);
             
-
             return Json(dailySummaryViewModel.PA);
-
         }
+
+        public IActionResult MAChart()
+        {
+            return View();
+        }
+
+        public JsonResult GetMAChartData(DateRangeViewModel dateRangeView)
+        {
+            //var fromDate = "07/12/2019";
+            //var toDate = "07/13/2019";
+            var fromDate = Convert.ToDateTime(dateRangeView.fromDate);
+            var toDate = Convert.ToDateTime(dateRangeView.toDate);
+
+            DailySummaryViewModel dailySummaryViewModel = new DailySummaryViewModel();
+
+            dailySummaryViewModel.MA = _mentalActivityService.GetByDateRange(fromDate, toDate);
+
+            return Json(dailySummaryViewModel.MA);
+        }
+
+        public IActionResult NUTChart()
+        {
+            return View();
+        }
+
+        public JsonResult GetNUTChartData(DateRangeViewModel dateRangeView)
+        {
+            //var fromDate = "07/12/2019";
+            //var toDate = "07/13/2019";
+            var fromDate = Convert.ToDateTime(dateRangeView.fromDate);
+            var toDate = Convert.ToDateTime(dateRangeView.toDate);
+
+            DailySummaryViewModel dailySummaryViewModel = new DailySummaryViewModel();
+
+            dailySummaryViewModel.NUT = _nutritionService.GetByDateRange(fromDate, toDate);
+
+            return Json(dailySummaryViewModel.NUT);
+        }
+
+        public IActionResult SLPChart()
+        {
+            return View();
+        }
+
+        public JsonResult GetSLPChartData(DateRangeViewModel dateRangeView)
+        {
+            //var fromDate = "07/12/2019";
+            //var toDate = "07/13/2019";
+            var fromDate = Convert.ToDateTime(dateRangeView.fromDate);
+            var toDate = Convert.ToDateTime(dateRangeView.toDate);
+
+            DailySummaryViewModel dailySummaryViewModel = new DailySummaryViewModel();
+
+            dailySummaryViewModel.SLP = _sleepService.GetByDateRange(fromDate, toDate);
+            
+            return Json(dailySummaryViewModel.SLP);
+        }
+
+       
 
     }
 }

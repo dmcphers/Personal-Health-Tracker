@@ -8,13 +8,13 @@ $('.js-chart-with-date-range').click(() => {
     var toDate = $('.js-to-date').val();
 
     // TODO: Validate that both dates are entered before getting data
-    getPaData(fromDate, toDate);
+    getNutData(fromDate, toDate);
 });
 
-function getPaData(fromDate, toDate) {
-    
+function getNutData(fromDate, toDate) {
+
     $.get({
-        url: '/chart/GetPAChartData',
+        url: '/chart/GetNUTChartData',
         data: {
             'fromDate': fromDate,
             'toDate': toDate
@@ -25,18 +25,15 @@ function getPaData(fromDate, toDate) {
 }
 
 function drawChart(result) {
-    var dataArray = [['Date', 'Calories Burned']];
+    var dataArray = [['Date', 'Calories']];
     result.forEach((activity) => {
-        //var dtformat = activity.date;
-        //var dateformat = dtformat.SubString(0, 10);
-        //dateformat = activity.date.SubString(0,10);
-        dataArray.push([activity.date, activity.caloriesBurned]);
+        dataArray.push([activity.date, activity.calories]);
     });
 
     var tableData = new google.visualization.arrayToDataTable(dataArray);
 
     var chartOptions = {
-        title: "Physical Activity Chart",
+        title: "Nutrition Chart",
         'width': 600,
         'height': 500,
         hAxis: {
@@ -48,6 +45,6 @@ function drawChart(result) {
         }
     };
 
-    var chart = new google.visualization.LineChart(document.getElementById('paChart'));
+    var chart = new google.visualization.LineChart(document.getElementById('nutChart'));
     chart.draw(tableData, chartOptions);
 }

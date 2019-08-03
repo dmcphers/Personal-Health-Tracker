@@ -8,13 +8,13 @@ $('.js-chart-with-date-range').click(() => {
     var toDate = $('.js-to-date').val();
 
     // TODO: Validate that both dates are entered before getting data
-    getPaData(fromDate, toDate);
+    getMaData(fromDate, toDate);
 });
 
-function getPaData(fromDate, toDate) {
-    
+function getMaData(fromDate, toDate) {
+
     $.get({
-        url: '/chart/GetPAChartData',
+        url: '/chart/GetMAChartData',
         data: {
             'fromDate': fromDate,
             'toDate': toDate
@@ -25,18 +25,15 @@ function getPaData(fromDate, toDate) {
 }
 
 function drawChart(result) {
-    var dataArray = [['Date', 'Calories Burned']];
+    var dataArray = [['Date', 'Duration']];
     result.forEach((activity) => {
-        //var dtformat = activity.date;
-        //var dateformat = dtformat.SubString(0, 10);
-        //dateformat = activity.date.SubString(0,10);
-        dataArray.push([activity.date, activity.caloriesBurned]);
+        dataArray.push([activity.date, activity.duration]);
     });
 
     var tableData = new google.visualization.arrayToDataTable(dataArray);
 
     var chartOptions = {
-        title: "Physical Activity Chart",
+        title: "Mental Activity Chart",
         'width': 600,
         'height': 500,
         hAxis: {
@@ -44,10 +41,10 @@ function drawChart(result) {
             minValue: 0
         },
         vAxis: {
-            title: 'Number of Calories'
+            title: 'Number of Minutes'
         }
     };
 
-    var chart = new google.visualization.LineChart(document.getElementById('paChart'));
+    var chart = new google.visualization.LineChart(document.getElementById('maChart'));
     chart.draw(tableData, chartOptions);
 }

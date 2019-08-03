@@ -7,13 +7,47 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+/* Table Styles */
+
+/*.Table {
+    display: table;
+    width: 100%;
+    
+}*/
+
+/*.Title {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.Row {
+    display: table-row;
+    
+}
+
+.Cell {
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+}*/
+
 
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
   font-size: 14px;
-  background-color: tan;
 }
 
 @media (min-width: 768px) {
@@ -27,7 +61,6 @@ html {
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
-  /*border-bottom: 2px solid red;*/
 }
 
 .box-shadow {
