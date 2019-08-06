@@ -27,6 +27,7 @@ function getNutData(fromDate, toDate) {
 function drawChart(result) {
     var dataArray = [['Date', 'Calories']];
     result.forEach((activity) => {
+        activity.date = activity.date.substring(5, 10) + "-" + activity.date.substring(0, 4);
         dataArray.push([activity.date, activity.calories]);
     });
 

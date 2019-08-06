@@ -13,33 +13,44 @@
 
 <h1>List of Physical Activities</h1>
 
+
 @if (Model.Count > 0)
 {
-    <div>
-        <a class="btn btn-secondary float-right" asp-action="Add" asp-controller="Physical_Activity">Add</a>
+    <div class="container">
+        <div>
+            <a class="btn btn-secondary float-right" style="margin-left: 2%" asp-action="PAChart" asp-controller="Chart">View Chart</a>
+        </div>
+        <div>
+            <a class="btn btn-secondary float-right" asp-action="Add" asp-controller="Physical_Activity">Add</a>
+        </div>
+
     </div>
+
+    <br />
+
 }
 
 <br />
 
 <table class="table">
     <tr>
+        <th>Date</th>
         <th>Description</th>
         <th>Duration</th>
         <th>Calories Burned</th>
-        <th>Date</th>
         <th></th>
     </tr>
 
     @foreach (var physical_activity in Model)
     {
         <tr>
+            <td>@physical_activity.Date.ToShortDateString()</td>
             <td>@physical_activity.Description</td>
             <td>@physical_activity.Duration</td>
             <td>@physical_activity.CaloriesBurned</td>
-            <td>@physical_activity.Date</td>
+
             <td>
-                <a asp-controller="Physical_Activity" asp-action="Detail" asp-route-id="@physical_activity.Id">Detail</a> |
+                @*<a asp-controller="Physical_Activity" asp-action="Detail" asp-route-id="@physical_activity.Id">Detail</a> |*@
                 <a asp-controller="Physical_Activity" asp-action="Edit" asp-route-id="@physical_activity.Id">Edit</a> |
                 <a href="#" class="js-open-modal" data-property-id="@physical_activity.Id">Delete</a>
             </td>
@@ -55,10 +66,12 @@
         </tr>
     }
 
-
 </table>
 
-<a asp-action="PAChart" asp-controller="Chart">PAChart</a>
+
+
+
+@*<a asp-action="PAChart" asp-controller="Chart">PAChart</a>*@
 
 
 <!-- Modal -->

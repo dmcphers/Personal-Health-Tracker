@@ -13,33 +13,42 @@
 
 @if (Model.Count > 0)
 {
-    <div>
-        <a class="btn btn-secondary float-right" asp-action="Add" asp-controller="Nutrition">Add</a>
+    <div class="container">
+        <div>
+            <a class="btn btn-secondary float-right" style="margin-left: 2%" asp-action="NUTChart" asp-controller="Chart">View Chart</a>
+        </div>
+        <div>
+            <a class="btn btn-secondary float-right" asp-action="Add" asp-controller="Nutrition">Add</a>
+        </div>
+
     </div>
+
+    <br />
 }
 
 <br />
 
 <table class="table">
     <tr>
+        <th>Date</th>
         <th>Description</th>
         <th>Calories</th>
-        <th>Date</th>
         <th></th>
     </tr>
 
     @foreach (var nutrition in Model)
     {
-        <tr>
-            <td>@nutrition.Description</td>
-            <td>@nutrition.Calories</td>
-            <td>@nutrition.Date</td>
-            <td>
-                <a asp-controller="Nutrition" asp-action="Detail" asp-route-id="@nutrition.Id">Detail</a> |
-                <a asp-controller="Nutrition" asp-action="Edit" asp-route-id="@nutrition.Id">Edit</a> |
-                <a href="#" class="js-open-modal" data-property-id="@nutrition.Id">Delete</a>
-            </td>
-        </tr>
+    <tr>
+        <td>@nutrition.Date.ToShortDateString()</td>
+        <td>@nutrition.Description</td>
+        <td>@nutrition.Calories</td>
+
+        <td>
+            @*<a asp-controller="Nutrition" asp-action="Detail" asp-route-id="@nutrition.Id">Detail</a> |*@
+            <a asp-controller="Nutrition" asp-action="Edit" asp-route-id="@nutrition.Id">Edit</a> |
+            <a href="#" class="js-open-modal" data-property-id="@nutrition.Id">Delete</a>
+        </td>
+    </tr>
     }
 
     @if (Model.Count == 0)
@@ -54,7 +63,6 @@
 
 </table>
 
-<a asp-action="NUTChart" asp-controller="Chart">NUTChart</a>
 
 <!-- Modal -->
 <div class="modal fade" id="delete-confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,13 +88,13 @@
 @section Scripts
     {
     <script>
-            $('.js-open-modal').on('click', event => {
-                const nutritionId = $(event.target).data('property-id');
-                const url = `/nutrition/delete/${nutritionId}`;
+        $('.js-open-modal').on('click', event => {
+            const nutritionId = $(event.target).data('property-id');
+            const url = `/nutrition/delete/${nutritionId}`;
 
-                $('#js-delete-button').attr('href', url);
+            $('#js-delete-button').attr('href', url);
 
-                $('#delete-confirmation').modal('show');
-            });
+            $('#delete-confirmation').modal('show');
+        });
     </script>
 }

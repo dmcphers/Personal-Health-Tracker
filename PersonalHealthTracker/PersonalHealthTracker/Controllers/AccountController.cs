@@ -69,10 +69,10 @@ namespace PersonalHealthTracker.WebUI.Controllers
                         // redirect
                         if(vm.Email == "admin@abc.com")
                         {
-                            return RedirectToAction("Index", "Admin");
+                            return RedirectToAction("Index", "Home");
                         }
 
-                        return RedirectToAction("Index", "User");
+                        return RedirectToAction("Index", "Home");
 
                     }
                     

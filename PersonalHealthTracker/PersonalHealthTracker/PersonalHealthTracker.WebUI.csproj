@@ -20,4 +20,11 @@
     <ProjectReference Include="..\PersonalHealthTrackerService\PersonalHealthTrackerService.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <None Update="pht.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

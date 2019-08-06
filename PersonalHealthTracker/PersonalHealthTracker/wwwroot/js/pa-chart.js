@@ -27,9 +27,7 @@ function getPaData(fromDate, toDate) {
 function drawChart(result) {
     var dataArray = [['Date', 'Calories Burned']];
     result.forEach((activity) => {
-        //var dtformat = activity.date;
-        //var dateformat = dtformat.SubString(0, 10);
-        //dateformat = activity.date.SubString(0,10);
+        activity.date = activity.date.substring(5, 10) + "-" + activity.date.substring(0, 4);
         dataArray.push([activity.date, activity.caloriesBurned]);
     });
 

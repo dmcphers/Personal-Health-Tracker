@@ -9,127 +9,155 @@
     </div>
 }
 
+    <style type="text/css">
+        @@media only screen and (max-width: 1678px) {
+            #datecolumn {
+                display: block;
+            }
+
+            #pcolumnsmall {
+                display: none;
+            }
+
+            #mcolumnsmall {
+                display: none;
+            }
+
+            #ncolumnsmall {
+                display: none;
+            }
+
+            #scolumnsmall {
+                display: none;
+            }
+        }
+        @@media only screen and (max-width: 560px) {
+            #datecolumn {
+                display: none;
+            }
+
+            #pcolumn {
+                display: none;
+            }
+
+            #mcolumn {
+                display: none;
+            }
+
+            #ncolumn {
+                display: none;
+            }
+
+            #scolumn {
+                display: none;
+            }
+            #pcolumnsmall {
+                display: block;
+            }
+
+            #mcolumnsmall {
+                display: block;
+            }
+
+            #ncolumnsmall {
+                display: block;
+            }
+
+            #scolumnsmall {
+                display: block;
+            }
+        }
+    </style>
+
 <h1>Date Range Summary</h1>
 
 <br />
 
-<div style="display: flex; border: 2px solid black">
-    <h3 style="margin: auto">@Model.PA.FirstOrDefault().Date.ToString("MM/dd/yyyy")</h3>
-    <h3>to</h3>
-    <h3 style="margin: auto">@Model.PA.LastOrDefault().Date.ToString("MM/dd/yyyy")</h3>
+<div style="display: flex;">
+    <h2 style="margin: auto">@Model.PA.FirstOrDefault().Date.ToString("MM/dd/yyyy")</h2>
+    <h2>to</h2>
+    <h2 style="margin: auto">@Model.PA.LastOrDefault().Date.ToString("MM/dd/yyyy")</h2>
 </div>
 
 <br />
 
-@*<div class="Table">
-    <div class="Heading ">
-        <div class="Cell">
-            <p>Date</p>
-        </div>
-        <div class="Cell">
-            <p>Physical Activity</p>
-        </div>
-        <div class="Cell">
-            <p>Mental Activity</p>
-        </div>
-        <div class="Cell">
-            <p>Nutrition</p>
-        </div>
-        <div class="Cell">
-            <p>Sleep</p>
-        </div>
-    </div>
-    <div class="Row">
-
-        <div class="Cell">
-           
-                @foreach (var item in Model.PA)
-                {
-
-                    <div>
-                        @item.Date
-                        @item.Description
-                    </div>
-                }
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2" id="datecolumn">
+            <h2>Date</h2>
             
-        </div>
-        <div class="Cell">
-            <p>Row 1 Column 2</p>
-        </div>
-        <div class="Cell">
-            <p>Row 1 Column 3</p>
-        </div>
-    </div>
-    <div class="Row">
-        <div class="Cell">
-            <p>Row 2 Column 1</p>
-        </div>
-        <div class="Cell">
-            <p>Row 2 Column 2</p>
-        </div>
-        <div class="Cell">
-            <p>Row 2 Column 3</p>
-        </div>
-    </div>
-</div>*@
-<div style="display: flex; width: 100%;">
-    <div style="margin: auto;">
-        <h2>Date</h2>
-       
             @foreach (var item in Model.PA)
             {
-            @*<div style="border-top: 1px solid"></div>*@
+                @*<div style="border-top: 1px solid"></div>*@
+
                 <div style="padding: 0.75rem; border-top: 1px solid">
                     @item.Date.ToShortDateString()
                 </div>
             }
-    </div>
-    <div style="margin: auto;">
-        <h2>Physical Activity</h2>
-        
+        </div>
+        <div class="col-sm-2">
+            <h2>Physical</h2>
+
             @foreach (var item in Model.PA)
             {
-            <div style="padding: 0.75rem; border-top: 1px solid;">
-                @item.Description
-            </div>
+                <div id="pcolumn" style="padding: 0.75rem; border-top: 1px solid;">
+                    @item.Description
+                </div>
+                <div id="pcolumnsmall" style="padding: 0.75rem; border-top: 1px solid;">
+                    @item.Date.ToShortDateString()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @item.Description
+                </div>
             }
-        
-    </div>
-    <div style="margin: auto;">
-        <h2>Mental Activity</h2>
-       
+
+        </div>
+        <div class="col-sm-2">
+            <h2>Mental</h2>
+
             @foreach (var item in Model.MA)
             {
-            <div style="padding: 0.75rem; border-top: 1px solid;">
-                @item.Description
-            </div>
+                <div id="mcolumn" style="padding: 0.75rem; border-top: 1px solid;">
+                    @item.Description
+                </div>
+                <div id="mcolumnsmall" style="padding: 0.75rem; border-top: 1px solid;">
+                    @item.Date.ToShortDateString()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @item.Description
+                </div>
             }
-        
-    </div>
-    <div style="margin: auto;">
-        <h2>Nutrition</h2>
-        
+
+        </div>
+        <div class="col-sm-2">
+            <h2>Nutrition</h2>
+
             @foreach (var item in Model.NUT)
             {
-            <div style="padding: 0.75rem; border-top: 1px solid">
-                @item.Description
-            </div>
+                <div id="ncolumn" style="padding: 0.75rem; border-top: 1px solid">
+                    @item.Description
+                </div>
+                <div id="ncolumnsmall" style="padding: 0.75rem; border-top: 1px solid">
+                    @item.Date.ToShortDateString()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @item.Description
+                </div>
             }
-        
-    </div>
-    <div style="margin: auto;">
-        <h2>Sleep</h2>
-        
+
+        </div>
+        <div class="col-sm-2">
+            <h2>Sleep</h2>
+
             @foreach (var item in Model.SLP)
             {
-            <div style="padding: 0.75rem; border-top: 1px solid">
-                @item.Description
-            </div>
+                <div id="scolumn" style="padding: 0.75rem; border-top: 1px solid">
+                    @item.Description
+                </div>
+                <div id="scolumnsmall" style="padding: 0.75rem; border-top: 1px solid">
+                    @item.Date.ToShortDateString()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @item.Description
+                </div>
             }
-        
-    </div>
 
+        </div>
+    </div>
 </div>
+
 @*<table class="table">
     <tr>
         <th>Date</th>
@@ -160,22 +188,6 @@
     }
 
     </table>
-
-<table>
-
-    @foreach (var item in Model.MA)
-    {
-        <tr>
-            <td>@item.Date</td>
-            <td>@item.Description</td>
-        </tr>
-    }*@
-    @*//{
-        //}
-        //}
-        //}
-    //}*@
-    @*</table>*@
 
 
     @*

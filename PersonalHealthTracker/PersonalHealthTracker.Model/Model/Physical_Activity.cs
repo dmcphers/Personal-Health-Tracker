@@ -25,10 +25,10 @@ namespace PersonalHealthTracker.Domain.Model
         [Required]
         public DateTime Date { get; set; }
 
-        
+
 
         //Fully Defined Relationship for Property Type
-       [Display(Name = "Physical Activity")]
+        [Display(Name = "Physical Activity")]
         public int Physical_Activity_TypeId { get; set; }
         public Physical_Activity_Type Physical_Activity_Type { get; set; }
 

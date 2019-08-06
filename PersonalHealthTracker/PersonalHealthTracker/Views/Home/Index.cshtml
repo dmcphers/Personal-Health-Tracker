@@ -3,15 +3,15 @@
 
 <div class="row" >
     <div class="col">
-        <div class="card mb-5" >
-            <div class="card-body text-center">
+        <div class="card mb-4">
+            <div class="card-body text-center" style="font-size: 1.5em; border: 1px solid #007bff; ">
                 <a asp-action="Index" asp-controller="Physical_Activity">Physical Activities</a>
             </div>
         </div>
     </div>
     <div class="col">
         <div class="card mb-4">
-            <div class="card-body text-center">
+            <div class="card-body text-center" style="font-size: 1.5em; border: 1px solid #007bff;">
                 <a asp-action="Index" asp-controller="Mental_Activity">Mental Activities</a>
             </div>
         </div>
@@ -20,14 +20,14 @@
 <div class="row">
     <div class="col">
         <div class="card mb-4">
-            <div class="card-body text-center">
+            <div class="card-body text-center" style="font-size: 1.5em; border: 1px solid #007bff;">
                 <a asp-action="Index" asp-controller="Nutrition">Nutrition</a>
             </div>
         </div>
     </div>
     <div class="col">
         <div class="card mb-4">
-            <div class="card-body text-center">
+            <div class="card-body text-center" style="font-size: 1.5em; border: 1px solid #007bff;">
                 <a asp-action="Index" asp-controller="Sleep">Sleep</a>
             </div>
         </div>
@@ -36,15 +36,16 @@
 
 @* code for form controls to pass dates to controllers *@
 <div class="row">
-    <div class="col-12 ml-auto mr-auto">
+    <div class="col-6 ml-auto mr-auto">
         <div class="card mb-4">
             <div class="card-body">
                 <form asp-action="DailySummary" asp-controller="Home" method="post">
-                    <br />
+                    @*<br />*@
                     <div>
+                        <label asp-for="dateViewModel.searchDate">Search By Date:</label>
                         <input class="form-control" asp-for="dateViewModel.searchDate" type="date" />
 
-                        <button type="submit" class="btn btn-primary">View Date Summary</button>
+                        <button type="submit" class="btn btn-primary">Date Summary</button>
                     </div>
                 </form>
             </div>
@@ -52,16 +53,20 @@
     </div>
 </div>
 <div class="row">
-        <div class="col-12 ml-auto mr-auto">
+        <div class="col-6 ml-auto mr-auto">
             <div class="card mb-4">
                 <div class="card-body">
                     <form asp-action="DateRangeSummary" asp-controller="Home" method="post">
-                        <br />
+                        @*<br />*@
                         <div>
+                            <label asp-for="dateRangeViewModel.fromDate">Search By Date Range:</label>
+                            <br />
+                            <label asp-for="dateRangeViewModel.fromDate">Date From:</label>
                             <input class="form-control" asp-for="dateRangeViewModel.fromDate" type="date" width="276" />
+                            <label style="margin-top:1em;" asp-for="dateRangeViewModel.toDate">Date To:</label>
                             <input class="form-control" asp-for="dateRangeViewModel.toDate" type="date" width="276" />
 
-                            <button type="submit" class="btn btn-primary">View Date Range Summary</button>
+                            <button type="submit" class="btn btn-primary">Date Range Summary</button>
                         </div>
                     </form>
                 </div>

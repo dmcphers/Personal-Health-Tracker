@@ -17,44 +17,47 @@
 
 <br />
 
-<div style="display: flex">
+<div class="container">
+    <div class="row">
 
-<div style="margin: auto">
-    <h2>Physical Activity</h2>
-    <ul>
+    
+<div class="col-sm-3">
+    <h2>Physical</h2>
     @foreach (var item in Model.PA)
     {
-        <li>@item.Description</li>
+        <div style="padding: 0.75rem; border-top: 1px solid">
+            @item.Description
+        </div>
     }
-    </ul>
 </div>
-<div style="margin: auto">
-    <h2>Mental Activity</h2>
-    <ul>
+<div class="col-sm-3">
+    <h2>Mental</h2>
     @foreach (var item in Model.MA)
     {
-        <li>@item.Description</li>
+        <div style="padding: 0.75rem; border-top: 1px solid">
+            @item.Description
+        </div>
     }
-    </ul>
 </div>
-<div style="margin: auto">
+<div class="col-sm-3">
     <h2>Nutrition</h2>
-    <ul>
     @foreach (var item in Model.NUT)
     {
-        <li>@item.Description</li>
+        <div style="padding: 0.75rem; border-top: 1px solid">
+            @item.Description
+        </div>
     }
-    </ul>
 </div>
-<div style="margin: auto">
+<div class="col-sm-3">
     <h2>Sleep</h2>
-    <ul>
     @foreach (var item in Model.SLP)
     {
-        <li>@item.Hours</li>
+        <div style="padding: 0.75rem; border-top: 1px solid">
+            @item.Description
+        </div>
     }
-    </ul>
 </div>
+        </div>
 
 </div>
 

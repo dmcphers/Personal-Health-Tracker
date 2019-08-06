@@ -36,7 +36,7 @@ namespace PersonalHealthTracker.Data.Context
             // server - database - authentication
             //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PersonalHealthTracker;Trusted_Connection=true");
             optionsBuilder.UseSqlite("Data Source=C:\\git\\Personal-Health-Tracker\\PersonalHealthTracker\\PersonalHealthTracker\\pht.db");
-            //optionsBuilder.UseSqlite("Data Source=pht.db");
+            //optionsBuilder.UseSqlite("Data Source=D:\\home\\site\\wwwroot\\pht.db");
         }
 
         // We can manipulate the models
